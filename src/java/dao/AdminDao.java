@@ -7,8 +7,9 @@ package dao;
 
 /**
  *
- * @author User
+ * @author WahyuAu
  */
-public class AdminsDAO {
+public class AdminDao {
+    
     
 }
