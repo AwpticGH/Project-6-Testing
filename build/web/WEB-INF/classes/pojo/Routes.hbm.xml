@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 10, 2022 3:35:37 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="pojo.Routes" table="routes" catalog="g2airline" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="airportsByDestinationId" class="pojo.Airports" fetch="select">
+            <column name="destination_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="airportsByDepartureId" class="pojo.Airports" fetch="select">
+            <column name="departure_id" not-null="true" />
+        </many-to-one>
+        <property name="timeOfFlight" type="int">
+            <column name="time_of_flight" not-null="true" />
+        </property>
+        <set name="flightses" table="flights" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="route_id" not-null="true" />
+            </key>
+            <one-to-many class="pojo.Flights" />
+        </set>
+    </class>
+</hibernate-mapping>
