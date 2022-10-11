@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+.nft-title {
+        padding-top: 4rem;
+    }
+    
+    .text-footer {
+        font-size: 0.8rem;
+        padding: 0 80px;
+        opacity: 40%;
+    }
+    
+    .text-left {
+        text-align: left;
+    }
+    
+    .text-center {
+        text-align: center;
+    }
+ 
+    nav {
+        position: fixed;
+        background-color: lightblue;
+        width: 100%;
+        float: left;
+    }
+    
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+    
+    li {
+        float: left;
+    }
+    
+    li:last-child {
+        border-right: none;
+    }
+    
+    li a {
+        display: block;
+        color: black;
+        text-align: center;
+        padding: 15px 16px;
+        text-decoration: none;
+    }
+    
+    li a:hover {
+        background-color: lightslategray;
+    }
+    
+    li.menu-right {
+        float: right;
+    }
+    
+    .slider-wrapper {
+        margin: auto;
+        padding-top: 100px;
+    }
+    
+    .slider {
+        border-radius: 10px;
+    }
+    .footer {
+        position: absolute;
+        padding: 10px;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: lightblue;
+        color: black;
+        text-align: center;
+    }
