@@ -5,6 +5,9 @@
  */
 package config;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
@@ -13,14 +16,18 @@ import org.hibernate.service.ServiceRegistryBuilder;
  *
  * @author rafifajarrr
  */
-public class BeginTransaction {
+public class SessionConfig {
     
     Configuration cfg;
     
-    public void create(Class annotatedClass) {
+    public Session openSession(Class annotatedClass) {
         cfg = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(annotatedClass);
+        ServiceRegistry reg = new ServiceRegistryBuilder().applySettings(cfg.getProperties()).build();
         
-        ServiceRegistry reg = new ServiceRegistryBuilder().applySettings();
+        SessionFactory sf = cfg.buildSessionFactory(reg);
+        Session session = sf.openSession();
+        
+        return session;
     }
     
     

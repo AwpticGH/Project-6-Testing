@@ -12,6 +12,10 @@
             <h:inputText id="username">Username</h:inputText>
             <h:inputSecret id="password">Password</h:inputSecret>
         </h:form>
+        
+        <ui:repeat value="#{admins.name}" var="value">
+            #{value} <br/>
+        </ui:repeat>
     </h:body>
 </html>
 
