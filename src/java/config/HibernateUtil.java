@@ -16,7 +16,7 @@ import org.hibernate.service.ServiceRegistryBuilder;
  *
  * @author rafifajarrr
  */
-public class SessionConfig {
+public class HibernateUtil {
     
     Configuration cfg;
     

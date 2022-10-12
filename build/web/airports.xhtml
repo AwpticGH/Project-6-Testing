@@ -17,28 +17,22 @@
             <div class="row" display="table">
                 <div class="col-12">
                     <h:form>
-                        <b:dataTable value="#{admins.getAll()}"
-                                   var="admins">
+                        <b:dataTable value="#{airports.getAll()}"
+                                   var="airports">
                             <f:facet name="header">
                                 <tr>
                                 <th>No</th>
-                                <th>From City</th>
-                                <th>Username</th>
-                                <th>Password</th>
-                                <th>Insert</th>
-                                <th>Read</th>
-                                <th>Update</th>
-                                <th>Delete</th>
+                                <th>Code</th>
+                                <th>Name</th>
+                                <th>City</th>
+                                <th>Province</th>
                                 </tr>
                             </f:facet>
-                            <b:dataTableColumn value="#{admins.id}" />
-                            <b:dataTableColumn value="#{admins.name}" />
-                            <b:dataTableColumn value="#{admins.username}" />
-                            <b:dataTableColumn value="#{admins.password}" />
-                            <b:dataTableColumn value="#{admins.insertPriv}" />
-                            <b:dataTableColumn value="#{admins.selectPriv}" />
-                            <b:dataTableColumn value="#{admins.updatePriv}" />
-                            <b:dataTableColumn value="#{admins.deletePriv}" />
+                            <b:dataTableColumn value="#{airports.id}" />
+                            <b:dataTableColumn value="#{airports.code}" />
+                            <b:dataTableColumn value="#{airports.name}" />
+                            <b:dataTableColumn value="#{airports.city}" />
+                            <b:dataTableColumn value="#{airports.province}" />
                         </b:dataTable>
                     </h:form>
                      <center>

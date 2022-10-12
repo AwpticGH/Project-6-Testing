@@ -5,7 +5,7 @@
  */
 package dao;
 
-import config.SessionConfig;
+import config.HibernateUtil;
 import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Query;
@@ -17,55 +17,53 @@ import pojo.Admins;
  *
  * @author WahyuAu
  */
-public class AdminsDAO {
+public class AdminsDao extends BaseDao {
     
     
-    SessionConfig sessionConfig = new SessionConfig();
+    HibernateUtil hibernateUtil = new HibernateUtil();
     
     public List<Admins> getAll() {
-        Session session = sessionConfig.openSession(Admins.class);
-        Transaction trans = session.beginTransaction();
+        List<Object> results = super.getAll(Admins.class);
+        List<Admins> list = new ArrayList<>();
         
-        String hql = "FROM Admins";
-        System.out.println("dao 1");
-        Query query = session.createQuery(hql);
-        System.out.println("dao 2");
-        List<Admins> adminsList = query.list();
-        System.out.println(adminsList);
-        System.out.println("dao 3");
+        results.forEach((result) -> {
+            list.add(Admins.class.cast(result));
+        });
         
-        trans.commit();
-        session.close();
-        return adminsList;
+        return list;
     }
     
-    public boolean get(String username, String password) {
+    public Admins getById() {
+        return Admins.class.cast(super.getById(Admins.class, 1));
+    }
+    
+    public Admins getByUsernameAndPassword(String username, String password) {
         Admins admin = null;
         
-        Session session = sessionConfig.openSession(Admins.class);
+        Session session = hibernateUtil.openSession(Admins.class);
         Transaction trans = session.beginTransaction();
         
         String hql = "FROM Admins WHERE username = :username AND password = :password";
         Query query = session.createQuery(hql);
         query.setString("username", username);
         query.setString("password", password);
-        System.out.println(username + " : " + password);
+        
         admin = (Admins)query.uniqueResult();
         session.get(Admins.class, admin.getId());
         
         trans.commit();
         session.close();
         
-        return admin != null;
+        return admin;
     }
     
     public static void main(String[] args) {
-        AdminsDAO adminsDao = new AdminsDAO();
+        AdminsDao adminsDao = new AdminsDao();
         
         List<Admins> admins = adminsDao.getAll();
         
         System.out.println(admins.toString());
-        System.out.println(adminsDao.get("superadmin", "superadmin123"));
+        System.out.println(adminsDao.getByUsernameAndPassword("superadmin", "superadmin123"));
     }
     
 }

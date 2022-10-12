@@ -17,28 +17,20 @@
             <div class="row" display="table">
                 <div class="col-12">
                     <h:form>
-                        <b:dataTable value="#{admins.getAll()}"
-                                   var="admins">
+                        <b:dataTable value="#{routes.getAll()}"
+                                   var="routes">
                             <f:facet name="header">
                                 <tr>
                                 <th>No</th>
-                                <th>From City</th>
-                                <th>Username</th>
-                                <th>Password</th>
-                                <th>Insert</th>
-                                <th>Read</th>
-                                <th>Update</th>
-                                <th>Delete</th>
+                                <th>From</th>
+                                <th>To</th>
+                                <th>Time Of Flight</th>
                                 </tr>
                             </f:facet>
-                            <b:dataTableColumn value="#{admins.id}" />
-                            <b:dataTableColumn value="#{admins.name}" />
-                            <b:dataTableColumn value="#{admins.username}" />
-                            <b:dataTableColumn value="#{admins.password}" />
-                            <b:dataTableColumn value="#{admins.insertPriv}" />
-                            <b:dataTableColumn value="#{admins.selectPriv}" />
-                            <b:dataTableColumn value="#{admins.updatePriv}" />
-                            <b:dataTableColumn value="#{admins.deletePriv}" />
+                            <b:dataTableColumn value="#{routes.id}" />
+                            <b:dataTableColumn value="#{routes.airportsByDepartureId}" />
+                            <b:dataTableColumn value="#{routes.airportsByDestinationId}" />
+                            <b:dataTableColumn value="#{routes.timeOfFlight}" />
                         </b:dataTable>
                     </h:form>
                      <center>
