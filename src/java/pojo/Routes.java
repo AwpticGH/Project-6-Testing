@@ -54,7 +54,7 @@ public class Routes  implements java.io.Serializable {
         this.airportsByDestinationId = airportsByDestinationId;
     }
     public Airports getAirportsByDepartureId() {
-        return this.airportsByDepartureId;
+        return this.airportsByDepartureId.getById();
     }
     
     public void setAirportsByDepartureId(Airports airportsByDepartureId) {

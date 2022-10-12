@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import pojo.Admins;
 import pojo.Routes;
+import query.RoutesQuery;
 
 /**
  *
@@ -17,7 +18,9 @@ import pojo.Routes;
 public class RoutesDao extends BaseDao {
     
     public List<Routes> getAll() {
-        List<Object> results = super.getAll(Routes.class);
+        String sql = RoutesQuery.query;
+        
+        List<Object> results = super.getWithSql(Routes.class, sql);
         List<Routes> list = new ArrayList<>();
         
         results.forEach((result) -> {
@@ -29,5 +32,15 @@ public class RoutesDao extends BaseDao {
     
     public Admins getById() {
         return Admins.class.cast(super.getById(Routes.class, 1));
+    }
+    
+    public static void main(String[] args) {
+        
+        RoutesDao dao = new RoutesDao();
+        List<Routes> routes = dao.getAll();
+        
+        routes.forEach((route) -> {
+            System.out.println(route);
+        });
     }
 }
