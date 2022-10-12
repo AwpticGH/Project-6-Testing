@@ -17,22 +17,26 @@
             <div class="row" display="table">
                 <div class="col-12">
                     <h:form>
-                        <b:dataTable value="#{airports.getAll()}"
+                        <b:dataTable value="#{reservationsInfo.getAll()}"
                                    var="airports">
                             <f:facet name="header">
                                 <tr>
-                                <th>No</th>
-                                <th>Code</th>
+                                <th>ID</th>
+                                <th>Reservations ID</th>
+                                <th>Seat Class</th>
                                 <th>Name</th>
-                                <th>City</th>
-                                <th>Province</th>
+                                <th>Age</th>
+                                <th>Gender</th>
+                                <th>Phone Number</th>
                                 </tr>
                             </f:facet>
-                            <b:dataTableColumn value="#{airports.id}" />
-                            <b:dataTableColumn value="#{airports.code}" />
-                            <b:dataTableColumn value="#{airports.name}" />
-                            <b:dataTableColumn value="#{airports.city}" />
-                            <b:dataTableColumn value="#{airports.province}" />
+                            <b:dataTableColumn value="#{reservationsInfo.id}" />
+                            <b:dataTableColumn value="#{reservationsInfo.reservations}" />
+                            <b:dataTableColumn value="#{reservationsInfo.seatClass}" />
+                            <b:dataTableColumn value="#{reservationsInfo.name}" />
+                            <b:dataTableColumn value="#{reservationsInfo.age}" />
+                            <b:dataTableColumn value="#{reservationsInfo.gender}" />
+                            <b:dataTableColumn value="#{reservationsInfo.phoneNumber}" />
                         </b:dataTable>
                     </h:form>
                 </div>
