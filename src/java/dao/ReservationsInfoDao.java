@@ -16,8 +16,10 @@ import pojo.ReservationsInfo;
  */
 public class ReservationsInfoDao extends BaseDao {
     
+    String fetch = "reservations";
+    
     public List<ReservationsInfo> getAll() {
-        List<Object> results = super.getAll(ReservationsInfo.class);
+        List<Object> results = super.getAllWithFetch(ReservationsInfo.class, fetch);
         List<ReservationsInfo> list = new ArrayList<>();
         
         results.forEach((result) -> {
@@ -27,8 +29,17 @@ public class ReservationsInfoDao extends BaseDao {
         return list;
     }
     
-    public Admins getById() {
-        return Admins.class.cast(super.getById(ReservationsInfo.class, 1));
+    public ReservationsInfo getById(int id) {
+        return ReservationsInfo.class.cast(super.getByIdWithFetch(ReservationsInfo.class, id, fetch));
     }
     
+    @Override
+    public boolean create(Object pojo) {
+        return super.create(pojo);
+    }
+    
+    @Override
+    public boolean update(Object pojo) {
+        return super.update(pojo);
+    }
 }

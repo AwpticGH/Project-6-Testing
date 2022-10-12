@@ -80,7 +80,7 @@ public class Routes  implements java.io.Serializable {
     }
     
     public Routes getById() {
-        return Routes.class.cast(dao.getById(Routes.class, id));
+        return dao.getById(id);
     }
 
 

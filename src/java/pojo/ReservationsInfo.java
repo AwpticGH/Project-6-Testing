@@ -14,7 +14,6 @@ import javax.faces.bean.ManagedBean;
 @ManagedBean
 public class ReservationsInfo  implements java.io.Serializable {
 
-
      private Integer id;
      private Reservations reservations;
      private String seatClass;

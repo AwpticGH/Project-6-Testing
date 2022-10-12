@@ -31,37 +31,66 @@ public class BaseDao {
     
     public List<Object> getAll(Class pojo) {
         Session session = hibernateUtil.openSession(pojo);
-        Transaction trans = session.beginTransaction();
-        
-        Criteria criteria = session.createCriteria(pojo);
-        this.entityList = criteria.list();
-        
-        trans.commit();
-        session.close();
+        try {
+            Transaction trans = session.beginTransaction();
+
+            Criteria criteria = session.createCriteria(pojo);
+            this.entityList = criteria.list();
+
+            trans.commit();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        finally {
+            session.close();
+        }
         return entityList;
     }
     
-    public List<Object> getWithSql(Class pojo, String sql) {
-        Session session = hibernateUtil.openSession(pojo);
+    public List<Object> getAllWithFetch(Class pojo, String fetch) {
         Transaction trans = null;
-        List<Object> resultList = null;
+        Session session = hibernateUtil.openSession(pojo);
         
         try {
             trans = session.beginTransaction();
-            SQLQuery query = session.createSQLQuery(sql);
-            resultList = query.list();
-
+            Criteria criteria = session.createCriteria(pojo);
+            criteria.setFetchMode(fetch, FetchMode.EAGER);
+            
+            this.entityList = criteria.list();
             trans.commit();
-        } 
-        catch (HibernateException e) {
-            if (trans!=null) trans.rollback();
-            e.printStackTrace(); 
-        } 
-        finally {
-            session.close(); 
         }
+        catch (Exception e) {
+            e.getMessage();
+        }
+        finally {
+            session.close();
+        }
+        return entityList;
+    }
+    
+    public List<Object> getAllWithFetch(Class pojo, String fetch1, String fetch2) {
+        Transaction trans = null;
+        Session session = hibernateUtil.openSession(pojo);
         
-        return resultList;
+        try {
+            trans = session.beginTransaction();
+            Criteria criteria = session.createCriteria(pojo);
+            criteria.setFetchMode(fetch1, FetchMode.EAGER);
+            criteria.setFetchMode(fetch2, FetchMode.EAGER);
+            
+            this.entityList = criteria.list();
+            System.out.println("Base");
+            System.out.println(entityList);
+            trans.commit();
+        }
+        catch (Exception e) {
+            e.getMessage();
+        }
+        finally {
+            session.close();
+        }
+        return entityList;
     }
     
     public Object getById(Class pojo, int id) {
@@ -76,5 +105,84 @@ public class BaseDao {
         return entity;
     }
     
+    public Object getByIdWithFetch(Class pojo, int id, String fetch) {
+        Transaction trans = null;
+        Session session = hibernateUtil.openSession(pojo);
+        
+        try {
+            trans = session.beginTransaction();
+            Criteria criteria = session.createCriteria(pojo);
+            criteria.setFetchMode(fetch, FetchMode.EAGER).add(Restrictions.eq("id", id));
+            
+            this.entity = criteria.uniqueResult();
+            trans.commit();
+        }
+        catch (Exception e) {
+            e.getMessage();
+        }
+        finally {
+            session.close();
+        }
+        return entity;
+    }
     
+    public Object getByIdWithFetch(Class pojo, int id, String fetch1, String fetch2) {
+        Transaction trans = null;
+        Session session = hibernateUtil.openSession(pojo);
+        
+        try {
+            trans = session.beginTransaction();
+            Criteria criteria = session.createCriteria(pojo);
+            criteria.setFetchMode(fetch1, FetchMode.EAGER);
+            criteria.setFetchMode(fetch2, FetchMode.EAGER).add(Restrictions.eq("id", id));
+            
+            this.entity = criteria.uniqueResult();
+            trans.commit();
+        }
+        catch (Exception e) {
+            e.getMessage();
+        }
+        finally {
+            session.close();
+        }
+        return entity;
+    }
+    public boolean update(Object pojo){
+        Transaction trans = null;
+        Session session = hibernateUtil.openSession(pojo.getClass());
+        boolean success = false;
+        try {
+            trans = session.beginTransaction();
+            session.update(pojo);
+            trans.commit();
+            success = true;
+        }
+        catch (Exception e){
+            System.out.println(e);
+        }
+        finally {
+            session.close();
+        }
+        
+        return success;
+    }
+    
+    public boolean create(Object pojo) {
+        Transaction trans = null;
+        Session session = hibernateUtil.openSession(pojo.getClass());
+        boolean success = false;
+        try {
+            trans = session.beginTransaction();
+            session.save(pojo);
+            trans.commit();
+            success = true;
+        }
+        catch (Exception e) {
+            System.out.println(e);
+        }
+        finally {
+            session.close();
+        }
+        return success;
+    }
 }

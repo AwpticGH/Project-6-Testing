@@ -17,7 +17,7 @@ import javax.persistence.Entity;
  */
 @ManagedBean
 @SessionScoped
-public class Admins  implements java.io.Serializable {
+public class Admins implements java.io.Serializable {
 
 
      private Integer id;
@@ -142,8 +142,18 @@ public class Admins  implements java.io.Serializable {
         
         return "index.xhtml";
     }
+    
+    public String create() {
+        boolean isCreated = dao.create(this);
+        
+        return isCreated ? "superadmin" : "superadmin_create";
+    }
 
-
+    public String update() {
+        boolean isUpdated = dao.create(this);
+        
+        return isUpdated ? "superadmin" : "superadmin_update";
+    }
 }
 
 
