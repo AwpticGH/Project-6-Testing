@@ -11,6 +11,13 @@
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library dirs="200">
+<<<<<<< HEAD
+=======
+                    <file>${libs.MySQLDriver.classpath}</file>
+                    <path-in-war>WEB-INF/lib</path-in-war>
+                </library>
+                <library dirs="200">
+>>>>>>> bf1c5b6c315759aa403e631d26e3cb28abfc5eba
                     <file>${file.reference.BootsFaces-OSP-1.4.2.jar}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>

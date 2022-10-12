@@ -7,29 +7,29 @@
       xmlns:b="http://bootsfaces.net/ui">
     <h:head>
         <title>G2 Airline CMS</title>
-    <link rel="stylesheet" href="public/css/navbarandfooter.css"/>
-    <link rel="stylesheet" href="public/css/main.css"/>
+        <link rel="stylesheet" href="public/css/navbarandfooter.css"/>
+        <link rel="stylesheet" href="public/css/main.css"/>
     </h:head>
     <h:body>
-        <ui:include src="view/layouts/navbar.xhtml"/>
- <div class="container">
-            <div class="col-12 text-center nft-title">
-                <h1>G2 Airline</h1>
-            </div>
-            <div class="col-12 text-center">
-                <h3>Content Management System</h3>
-            </div>
+        <!--<ui:include src="view/layouts/navbar.xhtml"/>-->
+            <div class="container">
+                <div class="col-12 text-center nft-title">
+                    <h1>G2 Airline</h1>
+                </div>
+                <div class="col-12 text-center">
+                    <h3>Content Management System</h3>
+                </div>
                 <div class="col-xs-12 col-xs-updated">
                     <b:container style="width: 65%">
                         <h:form styleClass="form-signin" prependId="false">
                             <h2 class="form-signin-heading">Silahkan Login</h2>
-                            <b:inputText id="uName" required="true" placeholder="Username" value="#{tblUser.username}"
+                            <b:inputText id="uName" required="true" placeholder="Username" value="#{admins.username}"
                                          required-message="Username Tidak Boleh Kosong!" >
                                 <f:facet name="prepend">
                                     <span class="glyphicon glyphicon-user"></span>
                                 </f:facet>
                             </b:inputText>
-                            <b:inputText id="pWord" required="true" placeholder="Password" value="#{tblUser.password}"
+                            <b:inputText id="pWord" required="true" placeholder="Password" value="#{admins.password}"
                                          required-message="Password Tidak Boleh Kosong!" type="password">
                                 <f:facet name="prepend">
                                     <span class="glyphicon glyphicon-lock"></span>
@@ -37,7 +37,7 @@
                             </b:inputText>
                             <b:selectBooleanCheckbox value="true" caption="remember me"/>
                             <center>
-                                <b:commandButton look="primary btn-success" action="#{tblUser.validasiUser}"
+                                <b:commandButton look="primary btn-success" action="#{admins.login()}"
                                                  value="Sign In" icon="log-in" size="lg"/>
                             </center>
                         </h:form>

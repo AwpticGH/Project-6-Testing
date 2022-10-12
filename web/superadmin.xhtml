@@ -9,7 +9,7 @@
         <h:outputStylesheet library="css" name="bootstrap.min.css" />
         <h:outputStylesheet library="css" name="bootstrap.min.css" />
         <link rel="stylesheet" href="public/css/navbarandfooter.css"/>
-    <link rel="stylesheet" href="public/css/main.css"/>
+        <link rel="stylesheet" href="public/css/main.css"/>
     </h:head>
     <h:body>
         <ui:include src="view/layouts/navbar.xhtml"/>
@@ -18,17 +18,29 @@
             <div class="row" display="table">
                 <div class="col-12">
                     <h:form>
-                      <b:dataTable value="#{carPool.carPool}"
-                                   var="car">
-                        <b:dataTableColumn value="#{car.id}" />
-                        <b:dataTableColumn value="#{car.name}" />
-                        <b:dataTableColumn value="#{car.username}" />
-                        <b:dataTableColumn value="#{car.password}" />
-                        <b:dataTableColumn value="#{car.insert_priv}" />
-                        <b:dataTableColumn value="#{car.select_priv}" />
-                        <b:dataTableColumn value="#{car.update_priv}" />
-                        <b:dataTableColumn value="#{car.delete_priv}" />
-                      </b:dataTable>
+                        <b:dataTable value="#{admins.getAll()}"
+                                   var="admins">
+                            <f:facet name="header">
+                                <tr>
+                                <th>No</th>
+                                <th>From City</th>
+                                <th>Username</th>
+                                <th>Password</th>
+                                <th>Insert</th>
+                                <th>Read</th>
+                                <th>Update</th>
+                                <th>Delete</th>
+                                </tr>
+                            </f:facet>
+                            <b:dataTableColumn value="#{admins.id}" />
+                            <b:dataTableColumn value="#{admins.name}" />
+                            <b:dataTableColumn value="#{admins.username}" />
+                            <b:dataTableColumn value="#{admins.password}" />
+                            <b:dataTableColumn value="#{admins.insertPriv}" />
+                            <b:dataTableColumn value="#{admins.selectPriv}" />
+                            <b:dataTableColumn value="#{admins.updatePriv}" />
+                            <b:dataTableColumn value="#{admins.deletePriv}" />
+                        </b:dataTable>
                     </h:form>
                      <center>
 <!--                              <h:form>
