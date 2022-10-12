@@ -17,22 +17,22 @@
             <div class="row" display="table">
                 <div class="col-12">
                     <h:form>
-                        <b:dataTable value="#{airports.getAll()}"
+                        <b:dataTable value="#{reservations.getAll()}"
                                    var="airports">
                             <f:facet name="header">
                                 <tr>
-                                <th>No</th>
-                                <th>Code</th>
-                                <th>Name</th>
-                                <th>City</th>
-                                <th>Province</th>
+                                <th>ID</th>
+                                <th>Flight ID</th>
+                                <th>User ID</th>
+                                <th>Paid</th>
+                                <th>Active</th>
                                 </tr>
                             </f:facet>
-                            <b:dataTableColumn value="#{airports.id}" />
-                            <b:dataTableColumn value="#{airports.code}" />
-                            <b:dataTableColumn value="#{airports.name}" />
-                            <b:dataTableColumn value="#{airports.city}" />
-                            <b:dataTableColumn value="#{airports.province}" />
+                            <b:dataTableColumn value="#{reservations.id}" />
+                            <b:dataTableColumn value="#{reservations.flights}" />
+                            <b:dataTableColumn value="#{reservations.users}" />
+                            <b:dataTableColumn value="#{reservations.paid}" />
+                            <b:dataTableColumn value="#{reservations.active}" />
                         </b:dataTable>
                     </h:form>
                 </div>

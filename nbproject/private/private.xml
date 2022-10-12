@@ -3,18 +3,22 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
             <file>file:/D:/SEMESTER%203%20CCIT/G2AirlineHibernate/web/index.xhtml</file>
             <file>file:/D:/SEMESTER%203%20CCIT/G2AirlineHibernate/web/view/layouts/navbar.xhtml</file>
-            <file>file:/D:/SEMESTER%203%20CCIT/G2AirlineHibernate/web/public/css/navbarandfooter.css</file>
-            <file>file:/D:/SEMESTER%203%20CCIT/G2AirlineHibernate/web/garlion.xhtml</file>
+            <file>file:/D:/SEMESTER%203%20CCIT/G2AirlineHibernate/web/flights.xhtml</file>
+            <file>file:/D:/SEMESTER%203%20CCIT/G2AirlineHibernate/src/java/pojo/Routes.hbm.xml</file>
+            <file>file:/D:/SEMESTER%203%20CCIT/G2AirlineHibernate/web/view/layouts/footer.xhtml</file>
+            <file>file:/D:/SEMESTER%203%20CCIT/G2AirlineHibernate/web/airports.xhtml</file>
+            <file>file:/D:/SEMESTER%203%20CCIT/G2AirlineHibernate/web/reservations_info.xhtml</file>
+            <file>file:/D:/SEMESTER%203%20CCIT/G2AirlineHibernate/web/users.xhtml</file>
+            <file>file:/D:/SEMESTER%203%20CCIT/G2AirlineHibernate/web/edit_users.xhtml</file>
+            <file>file:/D:/SEMESTER%203%20CCIT/G2AirlineHibernate/web/routes.xhtml</file>
+            <file>file:/D:/SEMESTER%203%20CCIT/G2AirlineHibernate/src/java/dao/RoutesDao.java</file>
+            <file>file:/D:/SEMESTER%203%20CCIT/G2AirlineHibernate/src/java/pojo/Routes.java</file>
+            <file>file:/D:/SEMESTER%203%20CCIT/G2AirlineHibernate/src/java/pojo/ReservationsInfo.java</file>
+            <file>file:/D:/SEMESTER%203%20CCIT/G2AirlineHibernate/src/java/dao/BaseDao.java</file>
             <file>file:/D:/SEMESTER%203%20CCIT/G2AirlineHibernate/web/superadmin.xhtml</file>
-=======
-            <file>file:/G:/Rafi/Dev/WebApp/Hibernate/G2AirlineHibernate/web/view/layouts/navbar.xhtml</file>
-            <file>file:/G:/Rafi/Dev/WebApp/Hibernate/G2AirlineHibernate/src/java/dao/RoutesDao.java</file>
-            <file>file:/G:/Rafi/Dev/WebApp/Hibernate/G2AirlineHibernate/web/routes.xhtml</file>
-            <file>file:/G:/Rafi/Dev/WebApp/Hibernate/G2AirlineHibernate/src/java/pojo/Routes.java</file>
->>>>>>> bf1c5b6c315759aa403e631d26e3cb28abfc5eba
+            <file>file:/D:/SEMESTER%203%20CCIT/G2AirlineHibernate/web/reservations.xhtml</file>
         </group>
     </open-files>
 </project-private>
