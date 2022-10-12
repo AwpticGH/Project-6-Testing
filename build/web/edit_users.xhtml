@@ -16,12 +16,12 @@
                 <div class="col-12">
         <h:form>
                                 <br/>
-                                <h:outputLabel style="font-family: Centaur; font-size: 35px">Data Pelanggan</h:outputLabel>
+                                <h:outputLabel style="font-family: Centaur; font-size: 35px">Data Admin</h:outputLabel>
                                 <br/><br/>
                                 <table>
                                     <tr>
                                         <td>
-                                            <h:outputLabel style="font-family: Centaur; font-size: 24px">ID Pelanggan</h:outputLabel>
+                                            <h:outputLabel style="font-family: Centaur; font-size: 24px">ID Admin</h:outputLabel>
                                         </td>
                                         <td width="5%"></td>
                                         <td><b:inputText style="font-family: Centaur; font-size: 18px" placeholder="Masukkan ID Dicari" value=""/></td>
@@ -31,7 +31,7 @@
                                         <td></td>
                                         <td>
                                             <center>
-                                                <b:commandButton look="primary btn-success" value="Cari Data Pelanggan" icon="search" />
+                                                <b:commandButton look="primary btn-success" value="Cari Data Admin" action="#{admins.getById()}" icon="search" />
                                             </center>
                                             <br/>
                                         </td>
@@ -39,44 +39,44 @@
                                     <tr>
                                         <td><h:outputLabel style="font-family: Centaur; font-size: 24px">Nama:</h:outputLabel></td>
                                         <td></td>
-                                        <td><b:inputText style="font-family: Centaur; font-size: 18px" value=""/></td>
+                                        <td><b:inputText style="font-family: Centaur; font-size: 18px" value="#{admins.name}"/></td>
                                     </tr>
                                     <tr>
                                         <td><h:outputLabel style="font-family: Centaur; font-size: 24px">Username:</h:outputLabel></td>
                                         <td></td>
-                                        <td><b:inputText style="font-family: Centaur; font-size: 18px" value=""/></td>
+                                        <td><b:inputText style="font-family: Centaur; font-size: 18px" value="#{admins.username}"/></td>
                                     </tr>
                                     <tr>
                                         <td><h:outputLabel style="font-family: Centaur; font-size: 24px">Password:</h:outputLabel></td>
                                         <td></td>
-                                        <td><b:inputText style="font-family: Centaur; font-size: 18px" value=""/></td>
+                                        <td><b:inputText style="font-family: Centaur; font-size: 18px" value="#{admins.password}"/></td>
                                     </tr>
                                     <tr>
-                                        <td><h:outputLabel style="font-family: Centaur; font-size: 24px">Insert_priv:</h:outputLabel></td>
+                                        <td><h:outputLabel style="font-family: Centaur; font-size: 24px">Insert Privilege:</h:outputLabel></td>
                                         <td></td>
-                                        <td><b:inputText style="font-family: Centaur; font-size: 18px" value=""/></td>
+                                        <td><b:inputText style="font-family: Centaur; font-size: 18px" value="#{admins.insertPriv}"/></td>
                                     </tr>
                                     <tr>
-                                        <td><h:outputLabel style="font-family: Centaur; font-size: 24px">Select_priv:</h:outputLabel></td>
+                                        <td><h:outputLabel style="font-family: Centaur; font-size: 24px">Select Privilege:</h:outputLabel></td>
                                         <td></td>
-                                        <td><b:inputText style="font-family: Centaur; font-size: 18px" value=""/></td>
+                                        <td><b:inputText style="font-family: Centaur; font-size: 18px" value="#{admins.selectPriv}"/></td>
                                     </tr>
                                     <tr>
-                                        <td><h:outputLabel style="font-family: Centaur; font-size: 24px">Update_priv:</h:outputLabel></td>
+                                        <td><h:outputLabel style="font-family: Centaur; font-size: 24px">Update Privilege:</h:outputLabel></td>
                                         <td></td>
-                                        <td><b:inputText style="font-family: Centaur; font-size: 18px" value=""/></td>
+                                        <td><b:inputText style="font-family: Centaur; font-size: 18px" value="#{admins.updatePriv}"/></td>
                                     </tr>
                                     <tr>
-                                        <td><h:outputLabel style="font-family: Centaur; font-size: 24px">Delete_priv:</h:outputLabel></td>
+                                        <td><h:outputLabel style="font-family: Centaur; font-size: 24px">Delete Privilege:</h:outputLabel></td>
                                         <td></td>
-                                        <td><b:inputText style="font-family: Centaur; font-size: 18px" value=""/></td>
+                                        <td><b:inputText style="font-family: Centaur; font-size: 18px" value="#{admins.deletePriv}"/></td>
                                     </tr>
                                     <tr>
                                         <td colspan="3">
                                             <center>
-                                                <b:commandButton look="primary btn-success" value="UBAH" icon="edit" />
+                                                <b:commandButton look="primary btn-success" value="UBAH" action="#{admins.update()}" icon="edit" />
                                                 &nbsp;&nbsp;&nbsp;
-                                                <b:commandButton look="primary btn-success" value="HAPUS" icon="trash"/>
+                                                <b:commandButton look="primary btn-success" value="HAPUS" action="#{admins.delete()}" icon="trash"/>
                                             </center>
                                         </td>
                                     </tr>

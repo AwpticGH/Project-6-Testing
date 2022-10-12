@@ -132,12 +132,22 @@ public class Users  implements java.io.Serializable {
         return Users.class.cast(dao.getById(Users.class, id));
     }
 
-    public String edit() {
-        return "users.xhtml";
+    public String create() {
+        boolean isCreated = dao.create(this);
+        
+        return isCreated ? "users" : "create_users";
+    }
+
+    public String update() {
+        boolean isUpdated = dao.update(this);
+        
+        return isUpdated ? "users" : "edit_users";
     }
     
     public String delete() {
-        return "users.xhtml";
+        boolean isDeleted = dao.delete(this);
+        
+        return isDeleted ? "users" : "edit_users";
     }
 
 }

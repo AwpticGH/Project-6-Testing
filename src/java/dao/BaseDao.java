@@ -185,4 +185,23 @@ public class BaseDao {
         }
         return success;
     }
+    
+    public boolean delete(Object pojo) {
+        Transaction trans = null;
+        Session session = hibernateUtil.openSession(pojo.getClass());
+        boolean success = false;
+        try {
+            trans = session.beginTransaction();
+            session.delete(pojo);
+            trans.commit();
+            success = true;
+        }
+        catch (Exception e) {
+            System.out.println(e);
+        }
+        finally {
+            session.close();
+        }
+        return success;
+    }
 }

@@ -111,8 +111,22 @@ public class Admins implements java.io.Serializable {
         return dao.getAll();
     }
     
-    public Admins getById() {
-        return Admins.class.cast(dao.getById(Admins.class, id));
+    public String getById() {
+        System.out.println("id : " + id);
+        Admins admin = dao.getById(id);
+        System.out.println("name : " + name);
+        System.out.println("getById : " + admin.getName());
+        this.id = admin.getId();
+        this.name = admin.getName();
+        System.out.println("name : " + name);
+        this.username = admin.getUsername();
+        this.password = admin.getPassword();
+        this.insertPriv = admin.isInsertPriv();
+        this.selectPriv = admin.isSelectPriv();
+        this.updatePriv = admin.isUpdatePriv();
+        this.deletePriv = admin.isDeletePriv();
+        
+        return "edit_superadmin.xhtml";
     }
     
     public String login() {
@@ -126,7 +140,6 @@ public class Admins implements java.io.Serializable {
         this.setUpdatePriv(admin.isUpdatePriv());
         this.setDeletePriv(admin.isDeletePriv());
         
-        System.out.println("debug");
         return admin != null ? "superadmin" : "error";
     }
     
@@ -146,13 +159,19 @@ public class Admins implements java.io.Serializable {
     public String create() {
         boolean isCreated = dao.create(this);
         
-        return isCreated ? "superadmin" : "superadmin_create";
+        return isCreated ? "superadmin" : "create_superadmin";
     }
 
     public String update() {
-        boolean isUpdated = dao.create(this);
+        boolean isUpdated = dao.update(this);
         
-        return isUpdated ? "superadmin" : "superadmin_update";
+        return isUpdated ? "superadmin" : "edit_superadmin";
+    }
+    
+    public String delete() {
+        boolean isDeleted = dao.delete(this);
+        
+        return isDeleted ? "superadmin" : "edit_superadmin";
     }
 }
 
