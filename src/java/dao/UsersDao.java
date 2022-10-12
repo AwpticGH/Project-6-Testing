@@ -31,4 +31,14 @@ public class UsersDao extends BaseDao {
         return Admins.class.cast(super.getById(Users.class, 1));
     }
     
+    @Override
+    public boolean create(Object pojo) {
+        return super.create(pojo);
+    }
+    
+    @Override
+    public boolean update(Object pojo) {
+        return super.update(pojo);
+    }
+    
 }

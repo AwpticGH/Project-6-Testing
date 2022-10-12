@@ -57,13 +57,30 @@ public class AdminsDao extends BaseDao {
         return admin;
     }
     
+    @Override
+    public boolean create(Object pojo) {
+        return super.create(pojo);
+    }
+    
+    @Override
+    public boolean update(Object pojo) {
+        return super.update(pojo);
+    }
+    
     public static void main(String[] args) {
         AdminsDao adminsDao = new AdminsDao();
         
+        Admins admin = new Admins("Create", "create", "create", true, false, false, true);
         List<Admins> admins = adminsDao.getAll();
         
-        System.out.println(admins.toString());
-        System.out.println(adminsDao.getByUsernameAndPassword("superadmin", "superadmin123"));
+        admin.setId(6);
+        admin.setName("Update");
+        admin.setUsername("update");
+        admin.setPassword("update");
+//        System.out.println(adminsDao.update(admin)); //Needs ID
+//        System.out.println(adminsDao.create(admin)); //Success (no need for id)
+//        System.out.println(admins.toString());
+//        System.out.println(adminsDao.getByUsernameAndPassword("superadmin", "superadmin123"));
     }
     
 }
