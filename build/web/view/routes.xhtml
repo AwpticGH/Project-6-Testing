@@ -1,0 +1,117 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <h:outputStylesheet library="css" name="bootstrap.min.css" />
+        <link rel="stylesheet" href="../public/css/navbarandfooter.css"/>
+        <link rel="stylesheet" href="../public/css/main.css"/>
+    </h:head>
+    <h:body>
+        <ui:include src="./layouts/navbar.xhtml"/>
+                            
+        <div class="container">
+            <div class="row" display="table">
+                <div class="col-12">
+                    <h:form>
+                        <b:link value="Create" href="./create/create_routes.xhtml"/>
+                        <br/><br/>
+                        <b:dataTable value="#{routes.getAll()}"
+                                   var="routes">
+                            <f:facet name="header">
+                                <tr>
+                                <th>No</th>
+                                <th>From</th>
+                                <th>To</th>
+                                <th>Time Of Flight</th>
+                                </tr>
+                            </f:facet>
+                            <b:dataTableColumn value="#{routes.id}" />
+                            <b:dataTableColumn value="#{routes.airportsByDepartureId.name}" />
+                            <b:dataTableColumn value="#{routes.airportsByDestinationId.name}" />
+                            <b:dataTableColumn value="#{routes.timeOfFlight}" />
+                        </b:dataTable>
+                        <b:link value="Edit" href="./edit/edit_routes.xhtml"/>
+                    </h:form>
+                     <center>
+<!--                              <h:form>
+                                
+                                <br/>
+                                <h:outputLabel style="font-family: Centaur; font-size: 35px">Data Pelanggan</h:outputLabel>
+                                <br/><br/>
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <h:outputLabel style="font-family: Centaur; font-size: 24px">ID Pelanggan</h:outputLabel>
+                                        </td>
+                                        <td width="5%"></td>
+                                        <td><b:inputText style="font-family: Centaur; font-size: 18px" placeholder="Masukkan ID Dicari" value=""/></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <center>
+                                                <b:commandButton look="primary btn-success" value="Cari Data Pelanggan" icon="search" />
+                                            </center>
+                                            <br/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><h:outputLabel style="font-family: Centaur; font-size: 24px">Nama:</h:outputLabel></td>
+                                        <td></td>
+                                        <td><b:inputText style="font-family: Centaur; font-size: 18px" value=""/></td>
+                                    </tr>
+                                    <tr>
+                                        <td><h:outputLabel style="font-family: Centaur; font-size: 24px">Username:</h:outputLabel></td>
+                                        <td></td>
+                                        <td><b:inputText style="font-family: Centaur; font-size: 18px" value=""/></td>
+                                    </tr>
+                                    <tr>
+                                        <td><h:outputLabel style="font-family: Centaur; font-size: 24px">Password:</h:outputLabel></td>
+                                        <td></td>
+                                        <td><b:inputText style="font-family: Centaur; font-size: 18px" value=""/></td>
+                                    </tr>
+                                    <tr>
+                                        <td><h:outputLabel style="font-family: Centaur; font-size: 24px">Insert_priv:</h:outputLabel></td>
+                                        <td></td>
+                                        <td><b:inputText style="font-family: Centaur; font-size: 18px" value=""/></td>
+                                    </tr>
+                                    <tr>
+                                        <td><h:outputLabel style="font-family: Centaur; font-size: 24px">Select_priv:</h:outputLabel></td>
+                                        <td></td>
+                                        <td><b:inputText style="font-family: Centaur; font-size: 18px" value=""/></td>
+                                    </tr>
+                                    <tr>
+                                        <td><h:outputLabel style="font-family: Centaur; font-size: 24px">Update_priv:</h:outputLabel></td>
+                                        <td></td>
+                                        <td><b:inputText style="font-family: Centaur; font-size: 18px" value=""/></td>
+                                    </tr>
+                                    <tr>
+                                        <td><h:outputLabel style="font-family: Centaur; font-size: 24px">Delete_priv:</h:outputLabel></td>
+                                        <td></td>
+                                        <td><b:inputText style="font-family: Centaur; font-size: 18px" value=""/></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">
+                                            <center>
+                                                <b:commandButton look="primary btn-success" value="UBAH" icon="edit" />
+                                                &nbsp;&nbsp;&nbsp;
+                                                <b:commandButton look="primary btn-success" value="HAPUS" icon="trash"/>
+                                            </center>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <br/>
+                            </h:form>-->
+                    </center>
+                </div>
+            </div>
+        </div>
+                <ui:include src="./layouts/footer.xhtml"/>
+    </h:body>
+</html>
+

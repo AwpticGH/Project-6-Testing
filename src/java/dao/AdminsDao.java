@@ -8,6 +8,7 @@ package dao;
 import config.HibernateUtil;
 import java.util.ArrayList;
 import java.util.List;
+import javax.faces.context.FacesContext;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -55,6 +56,13 @@ public class AdminsDao extends BaseDao {
         session.close();
         
         return admin;
+    }
+    
+    public void logout() {
+//        Session session = hibernateUtil.openSession(Admins.class);
+//        session.flush();
+//        session.clear();
+//        session.close();
     }
     
 //    public static void main(String[] args) {

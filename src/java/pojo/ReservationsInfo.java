@@ -98,11 +98,35 @@ public class ReservationsInfo  implements java.io.Serializable {
         return dao.getAll();
     }
     
-    public ReservationsInfo getById() {
-        return ReservationsInfo.class.cast(dao.getById(ReservationsInfo.class, id));
+    public String getById() {
+        ReservationsInfo reservationInfo = dao.getById(id);
+        this.id = reservationInfo.getId();
+        this.reservations = reservationInfo.getReservations();
+        this.name = reservationInfo.getName();
+        this.age = reservationInfo.getAge();
+        this.gender = reservationInfo.getGender();
+        this.phoneNumber = reservationInfo.getPhoneNumber();
+        
+        return "./edit_reservations_info.xhtml";
     }
 
+    public String create() {
+        boolean isCreated = dao.create(this);
+        
+        return isCreated ? "../reservations_info.xhtml" : "./create_reservations_info.xhtml";
+    }
 
+    public String update() {
+        boolean isUpdated = dao.update(this);
+        
+        return isUpdated ? "../reservations_info.xhtml" : "./edit_reservations_info.xhtml";
+    }
+    
+    public String delete() {
+        boolean isDeleted = dao.delete(this);
+        
+        return isDeleted ? "../reservations_info.xhtml" : "./edit_reservations_info.xhtml";
+    }
 }
 
 

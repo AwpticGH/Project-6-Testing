@@ -100,11 +100,33 @@ public class Airports  implements java.io.Serializable {
         return dao.getAll();
     }
     
-    public Airports getById() {
-        return Airports.class.cast(dao.getById(Airports.class, id));
+    public String getById() {
+        Airports airport = dao.getById(id);
+        this.id = airport.getId();
+        this.name = airport.getName();
+        this.city = airport.getCity();
+        this.province = airport.getProvince();
+        
+        return "./edit_airports.xhtml";
     }
 
+    public String update() {
+        boolean isUpdated = dao.update(this);
+        
+        return isUpdated ? "../airports.xhtml" : "./edit_airports.xhtml";
+    }
 
+    public String create() {
+        boolean isCreated = dao.create(this);
+        
+        return isCreated ? "../airports.xhtml" : "./create_airports.xhtml";
+    }
+    
+    public String delete() {
+        boolean isDeleted = dao.delete(this);
+        
+        return isDeleted ? "../airports.xhtml" : "./edit_airports.xhtml";
+    }
 }
 
 

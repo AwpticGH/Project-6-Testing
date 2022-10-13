@@ -87,25 +87,25 @@ public class Flights  implements java.io.Serializable {
         this.airplanes = flight.getAirplanes();
         this.timeOfDeparture = flight.getTimeOfDeparture();
         
-        return "/edit_flights.xhtml";
+        return "./edit_flights.xhtml";
     }
     
     public String create() {
         boolean isCreated = dao.create(this);
         
-        return isCreated ? "superadmin" : "create_superadmin";
+        return isCreated ? "../admins.xhtml" : "./create_admins.xhtml";
     }
 
     public String update() {
         boolean isUpdated = dao.update(this);
         
-        return isUpdated ? "superadmin" : "edit_superadmin";
+        return isUpdated ? "../admins.xhtml" : "./edit_admins.xhtml";
     }
     
     public String delete() {
         boolean isDeleted = dao.delete(this);
         
-        return isDeleted ? "superadmin" : "edit_superadmin";
+        return isDeleted ? "../admins.xhtml" : "./edit_admins.xhtml";
     }
 }
 

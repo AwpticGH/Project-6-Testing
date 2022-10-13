@@ -28,8 +28,8 @@ public class AirlinesDao extends BaseDao {
         return list;
     }
     
-    public Admins getById() {
-        return Admins.class.cast(super.getById(Airlines.class, 1));
+    public Airlines getById(int id) {
+        return Airlines.class.cast(super.getById(Airlines.class, id));
     }
     
     @Override

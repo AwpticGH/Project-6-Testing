@@ -89,11 +89,34 @@ public class Reservations  implements java.io.Serializable {
         return dao.getAll();
     }
     
-    public Reservations getById() {
-        return Reservations.class.cast(dao.getById(Reservations.class, id));
+    public String getById() {
+        Reservations reservation = dao.getById(id);
+        this.id = reservation.getId();
+        this.flights = reservation.getFlights();
+        this.users = reservation.getUsers();
+        this.paid = reservation.isPaid();
+        this.active = reservation.isActive();
+        
+        return "./edit_reservations.xhtml";
     }
 
+    public String create() {
+        boolean isCreated = dao.create(this);
+        
+        return isCreated ? "../reservations.xhtml" : "./create_reservations.xhtml";
+    }
 
+    public String update() {
+        boolean isUpdated = dao.update(this);
+        
+        return isUpdated ? "../reservations.xhtml" : "./edit_reservations.xhtml";
+    }
+    
+    public String delete() {
+        boolean isDeleted = dao.delete(this);
+        
+        return isDeleted ? "../reservations.xhtml" : "./edit_reservations.xhtml";
+    }
 }
 
 

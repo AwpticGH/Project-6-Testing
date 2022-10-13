@@ -154,11 +154,37 @@ public class Airplanes  implements java.io.Serializable {
         return dao.getAll();
     }
     
-    public Airplanes getById() {
-        return Airplanes.class.cast(dao.getById(Airplanes.class, id));
+    public String getById() {
+        Airplanes airplane = dao.getById(id);
+        this.id = airplane.getId();
+        this.type = airplane.getType();
+        this.airlines = airplane.getAirlines();
+        this.totalSeats = airplane.getTotalSeats();
+        this.economySeats = airplane.getEconomySeats();
+        this.premiumEconomySeats = airplane.getPremiumEconomySeats();
+        this.businessSeats = airplane.getBusinessSeats();
+        this.firstClassSeats = airplane.getFirstClassSeats();
+        
+        return "./edit_airplanes.xhtml";
     }
 
+    public String update() {
+        boolean isUpdated = dao.update(this);
+        
+        return isUpdated ? "../airplanes.xhtml" : "./edit_airplanes.xhtml";
+    }
 
+    public String create() {
+        boolean isCreated = dao.create(this);
+        
+        return isCreated ? "../airplanes.xhtml" : "./create_airplanes.xhtml";
+    }
+    
+    public String delete() {
+        boolean isDeleted = dao.delete(this);
+        
+        return isDeleted ? "../airplanes.xhtml" : "./edit_airplanes.xhtml";
+    }
 }
 
 

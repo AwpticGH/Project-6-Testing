@@ -54,7 +54,7 @@ public class Routes  implements java.io.Serializable {
         this.airportsByDestinationId = airportsByDestinationId;
     }
     public Airports getAirportsByDepartureId() {
-        return this.airportsByDepartureId.getById();
+        return this.airportsByDepartureId;
     }
     
     public void setAirportsByDepartureId(Airports airportsByDepartureId) {
@@ -79,11 +79,33 @@ public class Routes  implements java.io.Serializable {
         return dao.getAll();
     }
     
-    public Routes getById() {
-        return dao.getById(id);
+    public String getById() {
+        Routes route = dao.getById(id);
+        this.id = route.getId();
+        this.airportsByDepartureId = route.getAirportsByDepartureId();
+        this.airportsByDestinationId = route.getAirportsByDestinationId();
+        this.timeOfFlight = route.getTimeOfFlight();
+        
+        return "./edit_routes.xhtml";
     }
 
+    public String create() {
+        boolean isCreated = dao.create(this);
+        
+        return isCreated ? "../routes.xhtml" : "./create_routes.xhtml";
+    }
 
+    public String update() {
+        boolean isUpdated = dao.update(this);
+        
+        return isUpdated ? "../routes.xhtml" : "./edit_routes.xhtml";
+    }
+    
+    public String delete() {
+        boolean isDeleted = dao.delete(this);
+        
+        return isDeleted ? "../routes.xhtml" : "./edit_routes.xhtml";
+    }
 }
 
 

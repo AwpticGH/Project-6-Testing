@@ -27,8 +27,8 @@ public class AirportsDao extends BaseDao {
         return list;
     }
     
-    public Admins getById() {
-        return Admins.class.cast(super.getById(Airports.class, 1));
+    public Airports getById(int id) {
+        return Airports.class.cast(super.getById(Airports.class, id));
     }
     
     @Override

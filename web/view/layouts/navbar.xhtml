@@ -9,22 +9,28 @@
     <h:body>
         <nav>
             <ul>
-                <li><a class="active" href="airports.xhtml">Airports</a></li>
-                <li><a class="active" href="routes.xhtml">Routes</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="#about">About</a></li>
-                <li class="menu-right"><a href="#{admins.logout()}">#{admins.name}</a></li>
+                <li><a class="active" href="/view/admins.xhtml">Admins</a></li>
+                <li><a class="active" href="/view/airports.xhtml">Airports</a></li>
+                <li><a class="active" href="/view/airplanes.xhtml">Airplanes</a></li>
+                <li><a class="active" href="/view/airports.xhtml">Airports</a></li>
+                <li><a class="active" href="/view/flights.xhtml">Flights</a></li>
+                <li><a class="active" href="/view/reservations.xhtml">Reservations</a></li>
+                <li><a class="active" href="/view/routes.xhtml">Routes</a></li>
+                <li><a class="active" href="/view/users.xhtml">Users</a></li>
+                <li class="menu-right">
+                    <h:link value="#{admins.logout()}">#{admins.username}</h:link>
+                </li>
             </ul>
         </nav>
-<!--
-        <b:navBar brand="Brand" brandHref="#" inverse="true">
+
+<!--        <b:navBar brand="Brand" brandHref="#" inverse="true">
             <b:navbarLinks>
                 <b:navLink value="#{admins.name}" href="#"></b:navLink>
                 <b:navLink value="Link" href="#"></b:navLink>
                 <b:navLink value="Link" href="#"></b:navLink>
             </b:navbarLinks>
-        </b:navBar>
-     -->
+        </b:navBar>-->
+     
     </h:body>
 </html>
 

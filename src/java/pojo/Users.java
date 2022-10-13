@@ -145,13 +145,7 @@ public class Users  implements java.io.Serializable {
         this.dateOfBirth = user.getDateOfBirth();
         this.phoneNumber = user.getPhoneNumber();
         
-        return "/edit_users.xhtml";
-    }
-
-    public String create() {
-        boolean isCreated = dao.create(this);
-        
-        return isCreated ? "users" : "create_users";
+        return "./edit_users.xhtml";
     }
 
     public String update() throws ParseException {
@@ -164,13 +158,19 @@ public class Users  implements java.io.Serializable {
         
         boolean isUpdated = dao.update(this);
         
-        return isUpdated ? "users" : "edit_users";
+        return isUpdated ? "../users.xhtml" : "./edit_users.xhtml";
+    }
+    
+    public String create() {
+        boolean isCreated = dao.create(this);
+        
+        return isCreated ? "../users.xhtml" : "./create_users.xhtml";
     }
     
     public String delete() {
         boolean isDeleted = dao.delete(this);
         
-        return isDeleted ? "users" : "edit_users";
+        return isDeleted ? "../users.xhtml" : "./edit_users.xhtml";
     }
 
 }

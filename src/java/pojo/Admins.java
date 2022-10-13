@@ -6,9 +6,6 @@ import java.util.List;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
 import dao.AdminsDao;
-import dao.BaseDao;
-import javax.persistence.Entity;
-
 
 
 
@@ -112,28 +109,17 @@ public class Admins implements java.io.Serializable {
     }
     
     public String getById() {
-        System.out.println("id before : " + id);
         Admins admin = dao.getById(id);
-        
-        System.out.println("id after get : " + id);
         this.id = admin.getId();
-        System.out.println("id after assignment : " + id);
         this.name = admin.getName();
-        System.out.println("name after assignment : " + name);
         this.username = admin.getUsername();
-        System.out.println("name after assignment : " + username);
         this.password = admin.getPassword();
-        System.out.println("name after assignment : " + password);
         this.insertPriv = admin.isInsertPriv();
-        System.out.println("name after assignment : " + insertPriv);
         this.selectPriv = admin.isSelectPriv();
-        System.out.println("name after assignment : " + selectPriv);
         this.updatePriv = admin.isUpdatePriv();
-        System.out.println("name after assignment : " + updatePriv);
         this.deletePriv = admin.isDeletePriv();
-        System.out.println("name after assignment : " + deletePriv);
         
-        return "/edit_superadmin.xhtml";
+        return "./edit_admins.xhtml";
     }
     
     public boolean login() {
@@ -151,34 +137,27 @@ public class Admins implements java.io.Serializable {
     }
     
     public String logout() {
-        this.setId(null);
-        this.setName(null);
-        this.setUsername(null);
-        this.setPassword(null);
-        this.setInsertPriv(false);
-        this.setSelectPriv(false);
-        this.setUpdatePriv(false);
-        this.setDeletePriv(false);
+        dao.logout();
         
-        return "index.xhtml";
+        return "/index.xhtml";
     }
     
     public String create() {
         boolean isCreated = dao.create(this);
         
-        return isCreated ? "superadmin" : "create_superadmin";
+        return isCreated ? "../admins.xhtml" : "./create_admins.xhtml";
     }
 
     public String update() {
         boolean isUpdated = dao.update(this);
         
-        return isUpdated ? "superadmin" : "edit_superadmin";
+        return isUpdated ? "../admins.xhtml" : "./edit_admins.xhtml";
     }
     
     public String delete() {
         boolean isDeleted = dao.delete(this);
         
-        return isDeleted ? "superadmin" : "edit_superadmin";
+        return isDeleted ? "../admins.xhtml" : "./edit_admins.xhtml";
     }
 }
 

@@ -6,17 +6,17 @@
 
     
     <navigation-rule>
-        <from-view-id>/index.xhtml</from-view-id>
+        <from-view-id>/view/index.xhtml</from-view-id>
         <navigation-case>
             <from-action>#{admins.login()}</from-action>
             <from-outcome>true</from-outcome>
-            <to-view-id>/flights.xhtml</to-view-id>
+            <to-view-id>/view/flights.xhtml</to-view-id>
             <redirect></redirect>
         </navigation-case>
         <navigation-case>
             <from-action>#{admins.login()}</from-action>
             <from-outcome>false</from-outcome>
-            <to-view-id>/flights.xhtml</to-view-id>
+            <to-view-id>/view/flights.xhtml</to-view-id>
             <redirect></redirect>
         </navigation-case>
     </navigation-rule>

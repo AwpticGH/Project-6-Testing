@@ -68,11 +68,32 @@ public class Airlines  implements java.io.Serializable {
         return dao.getAll();
     }
     
-    public Airlines getById() {
-        return Airlines.class.cast(dao.getById(Airlines.class, id));
+    public String getById() {
+        Airlines airline = dao.getById(id);
+        this.id = airline.getId();
+        this.code = airline.getCode();
+        this.name = airline.getName();
+        
+        return "./edit_airlines.xhtml";
+    }
+    
+    public String update() {
+        boolean isUpdated = dao.update(this);
+        
+        return isUpdated ? "../airlines.xhtml" : "./edit_airlines.xhtml";
     }
 
-
+    public String create() {
+        boolean isCreated = dao.create(this);
+        
+        return isCreated ? "../airlines.xhtml" : "./create_airlines.xhtml";
+    }
+    
+    public String delete() {
+        boolean isDeleted = dao.delete(this);
+        
+        return isDeleted ? "../airlines.xhtml" : "./edit_airlines.xhtml";
+    }
 }
 
 
