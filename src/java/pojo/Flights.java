@@ -80,11 +80,33 @@ public class Flights  implements java.io.Serializable {
         return dao.getAll();
     }
     
-    public Flights getById() {
-        return Flights.class.cast(dao.getById(Flights.class, id));
+    public String getById() {
+        Flights flight = dao.getById(id);
+        this.id = flight.getId();
+        this.routes = flight.getRoutes();
+        this.airplanes = flight.getAirplanes();
+        this.timeOfDeparture = flight.getTimeOfDeparture();
+        
+        return "/edit_flights.xhtml";
+    }
+    
+    public String create() {
+        boolean isCreated = dao.create(this);
+        
+        return isCreated ? "superadmin" : "create_superadmin";
     }
 
-
+    public String update() {
+        boolean isUpdated = dao.update(this);
+        
+        return isUpdated ? "superadmin" : "edit_superadmin";
+    }
+    
+    public String delete() {
+        boolean isDeleted = dao.delete(this);
+        
+        return isDeleted ? "superadmin" : "edit_superadmin";
+    }
 }
 
 

@@ -50,16 +50,22 @@ public class FlightsDao extends BaseDao {
     
     public static void main(String[] args) {
         FlightsDao dao = new FlightsDao();
-        List<Flights> flights = dao.getAll();
+//        List<Flights> flights = dao.getAll();
+        Flights flight1 = dao.getById(1);
         
-        flights.forEach((flight) -> {
-           System.out.println(flight); 
-           System.out.println(flight.getId()); 
-           System.out.println(flight.getAirplanes()); 
-           System.out.println(flight.getRoutes()); 
-           System.out.println(flight.getTimeOfDeparture());
-           
-           System.out.println("\n\n");
-        });
+//        flights.forEach((flight) -> {
+//           System.out.println(flight); 
+//           System.out.println(flight.getId()); 
+//           System.out.println(flight.getAirplanes()); 
+//           System.out.println(flight.getRoutes()); 
+//           System.out.println(flight.getTimeOfDeparture());
+//           
+//           System.out.println("\n\n");
+//        });
+        System.out.println(flight1);
+        System.out.println(flight1.getId());
+        System.out.println(flight1.getAirplanes().getId());
+        System.out.println(flight1.getRoutes().getId());
+        System.out.println(flight1.getTimeOfDeparture());
     }
 }

@@ -95,13 +95,20 @@ public class BaseDao {
     
     public Object getById(Class pojo, int id) {
         Session session = hibernateUtil.openSession(pojo);
-        Transaction trans = session.beginTransaction();
-        
-        Criteria criteria = session.createCriteria(pojo).add(Restrictions.eq("id", id));
-        this.entity = criteria.uniqueResult();
-        
-        trans.commit();
-        session.close();
+        try {
+            Transaction trans = session.beginTransaction();
+
+            Criteria criteria = session.createCriteria(pojo).add(Restrictions.eq("id", id));
+            this.entity = criteria.uniqueResult();
+            trans.commit();
+        }
+        catch(HibernateException e) {
+            e.getMessage();
+        }
+        finally {
+            session.close();
+            
+        }
         return entity;
     }
     
