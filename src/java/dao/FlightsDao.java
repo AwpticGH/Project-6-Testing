@@ -20,14 +20,11 @@ import pojo.Routes;
  */
 public class FlightsDao extends BaseDao {
     
+    String fetch1 = "airplanes";
+    String fetch2 = "routes";
+    
     public List<Flights> getAll() {
-//        List<Object> airports = super.getAll(Airports.class);
-//        List<Object> routes = super.getAll(Routes.class);
-//        
-//        List<Object> airlines = super.getAll(Airlines.class);
-//        List<Object> airplanes = super.getAll(Airplanes.class);
-        
-        List<Object> flights = super.getAll(Flights.class);
+        List<Object> flights = super.getAllWithFetch(Flights.class, fetch1, fetch2);
         List<Flights> list = new ArrayList<>();
         
         flights.forEach((result) -> {
@@ -37,23 +34,38 @@ public class FlightsDao extends BaseDao {
         return list;
     }
     
-    public Admins getById() {
-        return Admins.class.cast(super.getById(Flights.class, 1));
+    public Flights getById(int id) {
+        return Flights.class.cast(super.getByIdWithFetch(Flights.class, id, fetch1, fetch2));
+    }
+    
+    @Override
+    public boolean create(Object pojo) {
+        return super.create(pojo);
+    }
+    
+    @Override
+    public boolean update(Object pojo) {
+        return super.update(pojo);
     }
     
     public static void main(String[] args) {
         FlightsDao dao = new FlightsDao();
-        List<Flights> flights = dao.getAll();
+//        List<Flights> flights = dao.getAll();
+        Flights flight1 = dao.getById(1);
         
-        flights.forEach((flight) -> {
-           System.out.println(flight); 
-           System.out.println(flight.getId()); 
-           System.out.println(flight.getAirplanes()); 
-           System.out.println(flight.getRoutes()); 
-           System.out.println(flight.getTimeOfDeparture());
-           
-           System.out.println("\n\n");
-        });
+//        flights.forEach((flight) -> {
+//           System.out.println(flight); 
+//           System.out.println(flight.getId()); 
+//           System.out.println(flight.getAirplanes()); 
+//           System.out.println(flight.getRoutes()); 
+//           System.out.println(flight.getTimeOfDeparture());
+//           
+//           System.out.println("\n\n");
+//        });
+        System.out.println(flight1);
+        System.out.println(flight1.getId());
+        System.out.println(flight1.getAirplanes().getId());
+        System.out.println(flight1.getRoutes().getId());
+        System.out.println(flight1.getTimeOfDeparture());
     }
-    
 }

@@ -27,8 +27,8 @@ public class UsersDao extends BaseDao {
         return list;
     }
     
-    public Admins getById() {
-        return Admins.class.cast(super.getById(Users.class, 1));
+    public Users getById(int id) {
+        return Users.class.cast(super.getById(Users.class, id));
     }
     
 }

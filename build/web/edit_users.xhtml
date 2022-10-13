@@ -16,67 +16,72 @@
                 <div class="col-12">
         <h:form>
                                 <br/>
-                                <h:outputLabel style="font-family: Centaur; font-size: 35px">Data Pelanggan</h:outputLabel>
+                                <h:outputLabel style="font-family: Centaur; font-size: 35px">Data Admin</h:outputLabel>
                                 <br/><br/>
                                 <table>
                                     <tr>
                                         <td>
-                                            <h:outputLabel style="font-family: Centaur; font-size: 24px">ID Pelanggan</h:outputLabel>
+                                            <h:outputLabel style="font-family: Centaur; font-size: 24px">ID Admin</h:outputLabel>
                                         </td>
                                         <td width="5%"></td>
-                                        <td><b:inputText style="font-family: Centaur; font-size: 18px" placeholder="Masukkan ID Dicari" value=""/></td>
+                                        <td><b:inputText style="font-family: Centaur; font-size: 18px" placeholder="Masukkan ID Dicari" value="#{users.id}"/></td>
                                     </tr>
                                     <tr>
                                         <td></td>
                                         <td></td>
                                         <td>
                                             <center>
-                                                <b:commandButton look="primary btn-success" value="Cari Data Pelanggan" icon="search" />
+                                                <b:commandButton look="primary btn-success" value="Cari Data Admin" action="#{users.getById()}" icon="search" />
                                             </center>
                                             <br/>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><h:outputLabel style="font-family: Centaur; font-size: 24px">Nama:</h:outputLabel></td>
+                                        <td><h:outputLabel style="font-family: Centaur; font-size: 24px">Name:</h:outputLabel></td>
                                         <td></td>
-                                        <td><b:inputText style="font-family: Centaur; font-size: 18px" value=""/></td>
+                                        <td><b:inputText style="font-family: Centaur; font-size: 18px" value="#{users.name}"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td><h:outputLabel style="font-family: Centaur; font-size: 24px">Email:</h:outputLabel></td>
+                                        <td></td>
+                                        <td><b:inputText style="font-family: Centaur; font-size: 18px" value="#{users.email}"/></td>
                                     </tr>
                                     <tr>
                                         <td><h:outputLabel style="font-family: Centaur; font-size: 24px">Username:</h:outputLabel></td>
                                         <td></td>
-                                        <td><b:inputText style="font-family: Centaur; font-size: 18px" value=""/></td>
+                                        <td><b:inputText style="font-family: Centaur; font-size: 18px" value="#{users.username}"/></td>
                                     </tr>
                                     <tr>
                                         <td><h:outputLabel style="font-family: Centaur; font-size: 24px">Password:</h:outputLabel></td>
                                         <td></td>
-                                        <td><b:inputText style="font-family: Centaur; font-size: 18px" value=""/></td>
+                                        <td><b:inputText style="font-family: Centaur; font-size: 18px" value="#{users.password}"/></td>
                                     </tr>
                                     <tr>
-                                        <td><h:outputLabel style="font-family: Centaur; font-size: 24px">Insert_priv:</h:outputLabel></td>
+                                        <td><h:outputLabel style="font-family: Centaur; font-size: 24px">Gender:</h:outputLabel></td>
                                         <td></td>
-                                        <td><b:inputText style="font-family: Centaur; font-size: 18px" value=""/></td>
+                                        <td><b:inputText style="font-family: Centaur; font-size: 18px" value="#{users.gender}"/></td>
                                     </tr>
                                     <tr>
-                                        <td><h:outputLabel style="font-family: Centaur; font-size: 24px">Select_priv:</h:outputLabel></td>
+                                        <td><h:outputLabel style="font-family: Centaur; font-size: 24px">Title:</h:outputLabel></td>
                                         <td></td>
-                                        <td><b:inputText style="font-family: Centaur; font-size: 18px" value=""/></td>
+                                        <td><b:inputText style="font-family: Centaur; font-size: 18px" value="#{users.title}"/></td>
                                     </tr>
                                     <tr>
-                                        <td><h:outputLabel style="font-family: Centaur; font-size: 24px">Update_priv:</h:outputLabel></td>
+                                        <td><h:outputLabel style="font-family: Centaur; font-size: 24px">Date Of Birth:</h:outputLabel></td>
                                         <td></td>
-                                        <td><b:inputText style="font-family: Centaur; font-size: 18px" value=""/></td>
+                                        <td><b:datepicker style="font-family: Centaur; font-size: 18px" value="#{users.dateOfBirth}"/></td>
                                     </tr>
                                     <tr>
-                                        <td><h:outputLabel style="font-family: Centaur; font-size: 24px">Delete_priv:</h:outputLabel></td>
+                                        <td><h:outputLabel style="font-family: Centaur; font-size: 24px">Phone Number:</h:outputLabel></td>
                                         <td></td>
-                                        <td><b:inputText style="font-family: Centaur; font-size: 18px" value=""/></td>
+                                        <td><b:inputText style="font-family: Centaur; font-size: 18px" value="#{users.phoneNumber}"/></td>
                                     </tr>
                                     <tr>
                                         <td colspan="3">
                                             <center>
-                                                <b:commandButton look="primary btn-success" value="UBAH" icon="edit" />
+                                                <b:commandButton look="primary btn-success" value="UBAH" action="#{users.update()}" icon="edit" />
                                                 &nbsp;&nbsp;&nbsp;
-                                                <b:commandButton look="primary btn-success" value="HAPUS" icon="trash"/>
+                                                <b:commandButton look="primary btn-success" value="HAPUS" action="#{users.delete()}" icon="trash"/>
                                             </center>
                                         </td>
                                     </tr>

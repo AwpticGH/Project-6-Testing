@@ -18,25 +18,21 @@
                 <div class="col-12">
                     <h:form>
                         <b:dataTable value="#{flights.getAll()}"
-                                   var="users">
+                                   var="flights">
                             <f:facet name="header">
                                 <tr>
-                                <th>id</th>
-                                <th>Airplane ID</th>
+                                <th>No</th>
+                                <th>Airplane</th>
                                 <th>Route ID</th>
                                 <th>Departure</th>
-                                <th>Edit</th>
-                                <th>Delete</th>
                                 </tr>
                             </f:facet>
-                            <h:form>
-                                <b:dataTableColumn value="#{flights.id}" />
-                                <b:dataTableColumn value="#{flights.airplanes}" />
-                                <b:dataTableColumn value="#{flights.routes}" />
-                                <b:dataTableColumn value="#{flights.timeOfDeparture}" />
-                                <h:commandButton action="#{flights.edit()}">Edit</h:commandButton>
-                                <h:commandButton action="#{flights.delete()}">Edit</h:commandButton>
-                            </h:form>
+                            <b:dataTableColumn value="#{flights.id}" />
+                            <b:dataTableColumn value="#{flights.airplanes.type}" />
+                            <b:dataTableColumn value="#{flights.routes.id}" />
+                            <b:dataTableColumn value="#{flights.timeOfDeparture}" />
+                            <!--<h:commandButton action="{flights.update()}">Edit</h:commandButton>-->
+                            <!--<h:commandButton action="{flights.delete()}">Edit</h:commandButton>-->
                         </b:dataTable>
                     </h:form>
                 </div>

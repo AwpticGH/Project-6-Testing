@@ -30,4 +30,14 @@ public class AirportsDao extends BaseDao {
     public Admins getById() {
         return Admins.class.cast(super.getById(Airports.class, 1));
     }
+    
+    @Override
+    public boolean create(Object pojo) {
+        return super.create(pojo);
+    }
+    
+    @Override
+    public boolean update(Object pojo) {
+        return super.update(pojo);
+    }
 }

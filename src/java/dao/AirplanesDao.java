@@ -17,8 +17,10 @@ import pojo.Flights;
  */
 public class AirplanesDao extends BaseDao {
     
+    String fetch = "airlines";
+    
     public List<Airplanes> getAll() {
-        List<Object> results = super.getAll(Airplanes.class);
+        List<Object> results = super.getAllWithFetch(Airplanes.class, fetch);
         List<Airplanes> list = new ArrayList<>();
         
         results.forEach((result) -> {
@@ -28,7 +30,17 @@ public class AirplanesDao extends BaseDao {
         return list;
     }
     
-    public Admins getById() {
-        return Admins.class.cast(super.getById(Airplanes.class, 1));
+    public Airplanes getById(int id) {
+        return Airplanes.class.cast(super.getByIdWithFetch(Airplanes.class, id, fetch));
+    }
+    
+    @Override
+    public boolean create(Object pojo) {
+        return super.create(pojo);
+    }
+    
+    @Override
+    public boolean update(Object pojo) {
+        return super.update(pojo);
     }
 }
