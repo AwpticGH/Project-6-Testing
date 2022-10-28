@@ -31,7 +31,7 @@ public class BaseDao {
     Object entity = null;
     
     public List<Object> getAll(Class pojo) {
-        Session session = hibernateUtil.openSession(pojo);
+        Session session = hibernateUtil.openSession();
         try {
             Transaction trans = session.beginTransaction();
 
@@ -51,7 +51,7 @@ public class BaseDao {
     
     public List<Object> getAllWithFetch(Class pojo, String fetch) {
         Transaction trans = null;
-        Session session = hibernateUtil.openSession(pojo);
+        Session session = hibernateUtil.openSession();
         
         try {
             trans = session.beginTransaction();
@@ -72,7 +72,7 @@ public class BaseDao {
     
     public List<Object> getAllWithFetch(Class pojo, String fetch1, String fetch2) {
         Transaction trans = null;
-        Session session = hibernateUtil.openSession(pojo);
+        Session session = hibernateUtil.openSession();
         
         try {
             trans = session.beginTransaction();
@@ -95,7 +95,7 @@ public class BaseDao {
     }
     
     public Object getById(Class pojo, int id) {
-        Session session = hibernateUtil.openSession(pojo);
+        Session session = hibernateUtil.openSession();
         try {
             Transaction trans = session.beginTransaction();
 
@@ -115,7 +115,7 @@ public class BaseDao {
     
     public Object getByIdWithFetch(Class pojo, int id, String fetch) {
         Transaction trans = null;
-        Session session = hibernateUtil.openSession(pojo);
+        Session session = hibernateUtil.openSession();
         
         try {
             trans = session.beginTransaction();
@@ -136,7 +136,7 @@ public class BaseDao {
     
     public Object getByIdWithFetch(Class pojo, int id, String fetch1, String fetch2) {
         Transaction trans = null;
-        Session session = hibernateUtil.openSession(pojo);
+        Session session = hibernateUtil.openSession();
         
         try {
             trans = session.beginTransaction();
@@ -158,7 +158,7 @@ public class BaseDao {
     public boolean update(Object pojo){
         Alerts alert = new Alerts();
         Transaction trans = null;
-        Session session = hibernateUtil.openSession(pojo.getClass());
+        Session session = hibernateUtil.openSession();
         boolean succeed = false;
         try {
             trans = session.beginTransaction();
@@ -181,7 +181,7 @@ public class BaseDao {
     public boolean create(Object pojo) {
         Alerts alert = new Alerts();
         Transaction trans = null;
-        Session session = hibernateUtil.openSession(pojo.getClass());
+        Session session = hibernateUtil.openSession();
         boolean succeed = false;
         try {
             trans = session.beginTransaction();
@@ -203,7 +203,7 @@ public class BaseDao {
     public boolean delete(Object pojo) {
         Alerts alert = new Alerts();
         Transaction trans = null;
-        Session session = hibernateUtil.openSession(pojo.getClass());
+        Session session = hibernateUtil.openSession();
         boolean succeed = false;
         try {
             trans = session.beginTransaction();

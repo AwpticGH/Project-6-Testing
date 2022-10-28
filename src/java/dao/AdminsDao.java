@@ -9,6 +9,7 @@ import config.HibernateUtil;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.context.FacesContext;
+import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -41,19 +42,26 @@ public class AdminsDao extends BaseDao {
     public Admins getByUsernameAndPassword(String username, String password) {
         Admins admin = null;
         
-        Session session = hibernateUtil.openSession(Admins.class);
-        Transaction trans = session.beginTransaction();
-        
-        String hql = "FROM Admins WHERE username = :username AND password = :password";
-        Query query = session.createQuery(hql);
-        query.setString("username", username);
-        query.setString("password", password);
-        
-        admin = (Admins)query.uniqueResult();
-        session.get(Admins.class, admin.getId());
-        
-        trans.commit();
-        session.close();
+        Session session = hibernateUtil.openSession();
+        try {
+            Transaction trans = session.beginTransaction();
+
+            String hql = "FROM Admins WHERE username = :username AND password = :password";
+            Query query = session.createQuery(hql);
+            query.setString("username", username);
+            query.setString("password", password);
+
+            admin = (Admins)query.uniqueResult();
+            session.get(Admins.class, admin.getId());
+
+            trans.commit();
+        }
+        catch (HibernateException e) {
+            e.getMessage();
+        }
+        finally {
+            session.close();
+        }
         
         return admin;
     }

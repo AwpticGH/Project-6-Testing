@@ -18,15 +18,13 @@ import org.hibernate.service.ServiceRegistry;
  */
 public class HibernateUtil {
     
-    Configuration cfg;
+    private Configuration cfg;
     
-    public Session openSession(Class annotatedClass) {
-        cfg = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(annotatedClass);
-        ServiceRegistry reg = new StandardServiceRegistryBuilder().applySettings(cfg.getProperties()).build();
-        
+    public Session openSession() {
+        cfg = new Configuration().configure("hibernate.cfg.xml");
+        ServiceRegistry reg = new StandardServiceRegistryBuilder().applySettings(cfg.getProperties()).build(); 
         SessionFactory sf = cfg.buildSessionFactory(reg);
         Session session = sf.openSession();
-        
         return session;
     }
     
