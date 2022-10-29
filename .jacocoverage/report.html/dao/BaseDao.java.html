@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>BaseDao.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;G2AirlineHibernate&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">dao</a> &gt; <span class="el_source">BaseDao.java</span></div><h1>BaseDao.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package dao;
+
+import alert.Alerts;
+import config.HibernateUtil;
+import java.util.Iterator;
+import java.util.List;
+import javax.persistence.Entity;
+import org.hibernate.Criteria;
+import org.hibernate.FetchMode;
+import org.hibernate.HibernateException;
+import org.hibernate.Query;
+import org.hibernate.SQLQuery;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
+import pojo.Admins;
+
+/**
+ *
+ * @author rafifajarrr
+ */
+<span class="fc" id="L27">public class BaseDao {</span>
+    
+<span class="fc" id="L29">    HibernateUtil hibernateUtil = new HibernateUtil();</span>
+<span class="fc" id="L30">    List&lt;Object&gt; entityList = null;</span>
+<span class="fc" id="L31">    Object entity = null;</span>
+    
+    public List&lt;Object&gt; getAll(Class pojo) {
+<span class="fc" id="L34">        Session session = hibernateUtil.openSession();</span>
+        try {
+<span class="fc" id="L36">            Transaction trans = session.beginTransaction();</span>
+
+<span class="fc" id="L38">            Criteria criteria = session.createCriteria(pojo);</span>
+<span class="fc" id="L39">            this.entityList = criteria.list();</span>
+
+<span class="fc" id="L41">            trans.commit();</span>
+        }
+<span class="nc" id="L43">        catch (Exception e) {</span>
+<span class="nc" id="L44">            e.printStackTrace();</span>
+        }
+        finally {
+<span class="pc" id="L47">            session.close();</span>
+<span class="pc" id="L48">        }</span>
+<span class="fc" id="L49">        return entityList;</span>
+    }
+    
+    public List&lt;Object&gt; getAllWithFetch(Class pojo, String fetch) {
+<span class="nc" id="L53">        Transaction trans = null;</span>
+<span class="nc" id="L54">        Session session = hibernateUtil.openSession();</span>
+        
+        try {
+<span class="nc" id="L57">            trans = session.beginTransaction();</span>
+<span class="nc" id="L58">            Criteria criteria = session.createCriteria(pojo);</span>
+<span class="nc" id="L59">            criteria.setFetchMode(fetch, FetchMode.EAGER);</span>
+            
+<span class="nc" id="L61">            this.entityList = criteria.list();</span>
+<span class="nc" id="L62">            trans.commit();</span>
+        }
+<span class="nc" id="L64">        catch (Exception e) {</span>
+<span class="nc" id="L65">            e.getMessage();</span>
+        }
+        finally {
+<span class="nc" id="L68">            session.close();</span>
+<span class="nc" id="L69">        }</span>
+<span class="nc" id="L70">        return entityList;</span>
+    }
+    
+    public List&lt;Object&gt; getAllWithFetch(Class pojo, String fetch1, String fetch2) {
+<span class="nc" id="L74">        Transaction trans = null;</span>
+<span class="nc" id="L75">        Session session = hibernateUtil.openSession();</span>
+        
+        try {
+<span class="nc" id="L78">            trans = session.beginTransaction();</span>
+<span class="nc" id="L79">            Criteria criteria = session.createCriteria(pojo);</span>
+<span class="nc" id="L80">            criteria.setFetchMode(fetch1, FetchMode.EAGER);</span>
+<span class="nc" id="L81">            criteria.setFetchMode(fetch2, FetchMode.EAGER);</span>
+            
+<span class="nc" id="L83">            this.entityList = criteria.list();</span>
+<span class="nc" id="L84">            System.out.println(&quot;Base&quot;);</span>
+<span class="nc" id="L85">            System.out.println(entityList);</span>
+<span class="nc" id="L86">            trans.commit();</span>
+        }
+<span class="nc" id="L88">        catch (Exception e) {</span>
+<span class="nc" id="L89">            e.getMessage();</span>
+        }
+        finally {
+<span class="nc" id="L92">            session.close();</span>
+<span class="nc" id="L93">        }</span>
+<span class="nc" id="L94">        return entityList;</span>
+    }
+    
+    public Object getById(Class pojo, int id) {
+<span class="fc" id="L98">        Session session = hibernateUtil.openSession();</span>
+        try {
+<span class="fc" id="L100">            Transaction trans = session.beginTransaction();</span>
+
+<span class="fc" id="L102">            Criteria criteria = session.createCriteria(pojo).add(Restrictions.eq(&quot;id&quot;, id));</span>
+<span class="fc" id="L103">            this.entity = criteria.uniqueResult();</span>
+<span class="fc" id="L104">            trans.commit();</span>
+        }
+<span class="nc" id="L106">        catch(HibernateException e) {</span>
+<span class="nc" id="L107">            e.getMessage();</span>
+        }
+        finally {
+<span class="pc" id="L110">            session.close();</span>
+            
+<span class="pc" id="L112">        }</span>
+<span class="fc" id="L113">        return entity;</span>
+    }
+    
+    public Object getByIdWithFetch(Class pojo, int id, String fetch) {
+<span class="nc" id="L117">        Transaction trans = null;</span>
+<span class="nc" id="L118">        Session session = hibernateUtil.openSession();</span>
+        
+        try {
+<span class="nc" id="L121">            trans = session.beginTransaction();</span>
+<span class="nc" id="L122">            Criteria criteria = session.createCriteria(pojo);</span>
+<span class="nc" id="L123">            criteria.setFetchMode(fetch, FetchMode.EAGER).add(Restrictions.eq(&quot;id&quot;, id));</span>
+            
+<span class="nc" id="L125">            this.entity = criteria.uniqueResult();</span>
+<span class="nc" id="L126">            trans.commit();</span>
+        }
+<span class="nc" id="L128">        catch (Exception e) {</span>
+<span class="nc" id="L129">            e.getMessage();</span>
+        }
+        finally {
+<span class="nc" id="L132">            session.close();</span>
+<span class="nc" id="L133">        }</span>
+<span class="nc" id="L134">        return entity;</span>
+    }
+    
+    public Object getByIdWithFetch(Class pojo, int id, String fetch1, String fetch2) {
+<span class="nc" id="L138">        Transaction trans = null;</span>
+<span class="nc" id="L139">        Session session = hibernateUtil.openSession();</span>
+        
+        try {
+<span class="nc" id="L142">            trans = session.beginTransaction();</span>
+<span class="nc" id="L143">            Criteria criteria = session.createCriteria(pojo);</span>
+<span class="nc" id="L144">            criteria.setFetchMode(fetch1, FetchMode.EAGER);</span>
+<span class="nc" id="L145">            criteria.setFetchMode(fetch2, FetchMode.EAGER).add(Restrictions.eq(&quot;id&quot;, id));</span>
+            
+<span class="nc" id="L147">            this.entity = criteria.uniqueResult();</span>
+<span class="nc" id="L148">            trans.commit();</span>
+        }
+<span class="nc" id="L150">        catch (Exception e) {</span>
+<span class="nc" id="L151">            e.getMessage();</span>
+        }
+        finally {
+<span class="nc" id="L154">            session.close();</span>
+<span class="nc" id="L155">        }</span>
+<span class="nc" id="L156">        return entity;</span>
+    }
+    public boolean update(Object pojo){
+<span class="nc" id="L159">        Alerts alert = new Alerts();</span>
+<span class="nc" id="L160">        Transaction trans = null;</span>
+<span class="nc" id="L161">        Session session = hibernateUtil.openSession();</span>
+<span class="nc" id="L162">        boolean succeed = false;</span>
+        try {
+<span class="nc" id="L164">            trans = session.beginTransaction();</span>
+<span class="nc" id="L165">            session.update(pojo);</span>
+<span class="nc" id="L166">            trans.commit();</span>
+<span class="nc" id="L167">            succeed = true;</span>
+<span class="nc" id="L168">            alert.setStatus(succeed);</span>
+<span class="nc" id="L169">            alert.setSuccess(&quot;Successfully Updated Data&quot;);</span>
+        }
+<span class="nc" id="L171">        catch (Exception e){</span>
+<span class="nc" id="L172">            System.out.println(e);</span>
+        }
+        finally {
+<span class="nc" id="L175">            session.close();</span>
+<span class="nc" id="L176">        }</span>
+        
+<span class="nc" id="L178">        return succeed;</span>
+    }
+    
+    public boolean create(Object pojo) {
+<span class="fc" id="L182">        Alerts alert = new Alerts();</span>
+<span class="fc" id="L183">        Transaction trans = null;</span>
+<span class="fc" id="L184">        Session session = hibernateUtil.openSession();</span>
+<span class="fc" id="L185">        boolean succeed = false;</span>
+        try {
+<span class="fc" id="L187">            trans = session.beginTransaction();</span>
+<span class="fc" id="L188">            session.save(pojo);</span>
+<span class="fc" id="L189">            trans.commit();</span>
+<span class="fc" id="L190">            succeed = true;</span>
+<span class="fc" id="L191">            alert.setStatus(succeed);</span>
+<span class="fc" id="L192">            alert.setSuccess(&quot;Successfully Inserted New Data&quot;);</span>
+        }
+<span class="nc" id="L194">        catch (Exception e) {</span>
+<span class="nc" id="L195">            System.out.println(e);</span>
+        }
+        finally {
+<span class="pc" id="L198">            session.close();</span>
+<span class="pc" id="L199">        }</span>
+<span class="fc" id="L200">        return succeed;</span>
+    }
+    
+    public boolean delete(Object pojo) {
+<span class="nc" id="L204">        Alerts alert = new Alerts();</span>
+<span class="nc" id="L205">        Transaction trans = null;</span>
+<span class="nc" id="L206">        Session session = hibernateUtil.openSession();</span>
+<span class="nc" id="L207">        boolean succeed = false;</span>
+        try {
+<span class="nc" id="L209">            trans = session.beginTransaction();</span>
+<span class="nc" id="L210">            session.delete(pojo);</span>
+<span class="nc" id="L211">            trans.commit();</span>
+<span class="nc" id="L212">            succeed = true;</span>
+<span class="nc" id="L213">            alert.setStatus(succeed);</span>
+<span class="nc" id="L214">            alert.setSuccess(&quot;Successfully Deleted Data&quot;);</span>
+        }
+<span class="nc" id="L216">        catch (Exception e) {</span>
+<span class="nc" id="L217">            System.out.println(e);</span>
+        }
+        finally {
+<span class="nc" id="L220">            session.close();</span>
+<span class="nc" id="L221">        }</span>
+<span class="nc" id="L222">        return succeed;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>

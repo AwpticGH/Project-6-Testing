@@ -65,26 +65,4 @@ public class AdminsDao extends BaseDao {
         
         return admin;
     }
-    
-//    public static void main(String[] args) {
-//        AdminsDao adminsDao = new AdminsDao();
-//        
-//        Admins admin = adminsDao.getById(5);
-//        List<Admins> admins = adminsDao.getAll();
-//
-//        System.out.println(admin.getName());
-//        System.out.println(admin.getUsername());
-//        System.out.println(admin.getPassword());
-//
-//        admin.setId(6);
-//        admin.setName("Update");
-//        admin.setUsername("update");
-//        admin.setPassword("update");
-//        System.out.println(adminsDao.delete(admin)); //Needs ID
-//        System.out.println(adminsDao.update(admin)); //Needs ID
-//        System.out.println(adminsDao.create(admin)); //Success (no need for id)
-//        System.out.println(admins.toString());
-//        System.out.println(adminsDao.getByUsernameAndPassword("superadmin", "superadmin123"));
-//    }
-    
 }

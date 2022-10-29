@@ -74,7 +74,7 @@ public class AirlinesDaoTest {
         pojo.setCode("TC");
         pojo.setName("Black Box Test Create");
         instance.create(pojo);
-        Airlines created = instance.getById(42);
+        Airlines created = instance.getById(pojo.getId());
         assertEquals(pojo.getName(), created.getName());
     }
 
@@ -88,6 +88,7 @@ public class AirlinesDaoTest {
         Airlines pojo = instance.getById(42);
         pojo.setCode("TU");
         pojo.setName("Black Box Test Update");
+        instance.update(pojo);
         Airlines updated = instance.getById(42);
         assertEquals(pojo.getName(), updated.getName());
     }

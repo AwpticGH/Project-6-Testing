@@ -113,17 +113,4 @@ public class AdminsDaoTest {
         Admins result = instance.getByUsernameAndPassword(username, password);
         assertNull(result);
     }
-    
-    /**
-     * Test of getByUsernameAndPassword method, of class AdminsDao.
-     */
-    @Test
-    public void testGetByUsernameAndEmptyPassword() {
-        System.out.println("getByUsernameAndEmptyPassword");
-        String username = "superadmin";
-        String password = "";
-        AdminsDao instance = new AdminsDao();
-        Admins result = instance.getByUsernameAndPassword(username, password);
-        assertNull(result);
-    }
 }
