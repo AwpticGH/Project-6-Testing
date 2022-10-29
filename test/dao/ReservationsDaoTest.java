@@ -12,7 +12,9 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import pojo.Flights;
 import pojo.Reservations;
+import pojo.Users;
 
 /**
  *
@@ -46,26 +48,33 @@ public class ReservationsDaoTest {
     public void testGetAll() {
         System.out.println("getAll");
         ReservationsDao instance = new ReservationsDao();
-        List<Reservations> expResult = null;
+        String expResult = "1";
         List<Reservations> result = instance.getAll();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(expResult, String.valueOf(result.get(0).getFlights().getId()));
     }
 
     /**
-     * Test of getById method, of class ReservationsDao.
+     * Test of getById method with NotEquals, of class ReservationsDao.
      */
     @Test
-    public void testGetById() {
+    public void testGetByIdNotEquals() {
         System.out.println("getById");
-        int id = 0;
+        int id = 1;
         ReservationsDao instance = new ReservationsDao();
-        Reservations expResult = null;
         Reservations result = instance.getById(id);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertNotEquals("2", String.valueOf(result.getFlights().getId()));
+    }
+    
+    /**
+     * Test of getById method with Equals, of class ReservationsDao.
+     */
+    @Test
+    public void testGetByIdEquals() {
+        System.out.println("getById");
+        int id = 1;
+        ReservationsDao instance = new ReservationsDao();
+        Reservations result = instance.getById(id);
+        assertEquals("1", String.valueOf(result.getFlights().getId()));
     }
 
     /**
@@ -74,13 +83,22 @@ public class ReservationsDaoTest {
     @Test
     public void testCreate() {
         System.out.println("create");
-        Object pojo = null;
         ReservationsDao instance = new ReservationsDao();
-        boolean expResult = false;
+        Reservations pojo = new Reservations();
+        
+        FlightsDao flightDao = new FlightsDao();
+        Flights flight = flightDao.getById(2);
+        pojo.setFlights(flight);
+        
+        UsersDao userDao = new UsersDao();
+        Users user = userDao.getById(2);
+        pojo.setUsers(user);
+        
+        pojo.setPaid(false);
+        pojo.setActive(true);
+        
         boolean result = instance.create(pojo);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertTrue(result);
     }
 
     /**
@@ -89,13 +107,22 @@ public class ReservationsDaoTest {
     @Test
     public void testUpdate() {
         System.out.println("update");
-        Object pojo = null;
         ReservationsDao instance = new ReservationsDao();
-        boolean expResult = false;
+        Reservations pojo = instance.getById(23);
+        
+        FlightsDao flightDao = new FlightsDao();
+        Flights flight = flightDao.getById(2);
+        pojo.setFlights(flight);
+        
+        UsersDao userDao = new UsersDao();
+        Users user = userDao.getById(1);
+        pojo.setUsers(user);
+        
+        pojo.setPaid(false);
+        pojo.setActive(true);
+        
         boolean result = instance.update(pojo);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertTrue(result);
     }
     
 }

@@ -46,11 +46,8 @@ public class UsersDaoTest {
     public void testGetAll() {
         System.out.println("getAll");
         UsersDao instance = new UsersDao();
-        List<Users> expResult = null;
         List<Users> result = instance.getAll();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertNotNull(result);
     }
 
     /**
@@ -59,13 +56,11 @@ public class UsersDaoTest {
     @Test
     public void testGetById() {
         System.out.println("getById");
-        int id = 0;
+        int id = 1;
         UsersDao instance = new UsersDao();
-        Users expResult = null;
+        String expResult = "Awptic";
         Users result = instance.getById(id);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(expResult, result.getUsername());
     }
     
 }

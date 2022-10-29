@@ -46,11 +46,9 @@ public class AirportsDaoTest {
     public void testGetAll() {
         System.out.println("getAll");
         AirportsDao instance = new AirportsDao();
-        List<Airports> expResult = null;
+        String expResult = "Bandara Wamena";
         List<Airports> result = instance.getAll();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(expResult, result.get(51).getName());
     }
 
     /**
@@ -59,13 +57,11 @@ public class AirportsDaoTest {
     @Test
     public void testGetById() {
         System.out.println("getById");
-        int id = 0;
+        int id = 51;
         AirportsDao instance = new AirportsDao();
-        Airports expResult = null;
+        String expResult = "UPG";
         Airports result = instance.getById(id);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(expResult, result.getCode());
     }
 
     /**
@@ -74,13 +70,14 @@ public class AirportsDaoTest {
     @Test
     public void testCreate() {
         System.out.println("create");
-        Object pojo = null;
         AirportsDao instance = new AirportsDao();
-        boolean expResult = false;
+        Airports pojo = new Airports();
+        pojo.setCode("WBC");
+        pojo.setName("White Box Create");
+        pojo.setProvince("Jawa Barat");
+        pojo.setCity("Depok");
         boolean result = instance.create(pojo);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertTrue(result);
     }
 
     /**
@@ -89,13 +86,14 @@ public class AirportsDaoTest {
     @Test
     public void testUpdate() {
         System.out.println("update");
-        Object pojo = null;
         AirportsDao instance = new AirportsDao();
-        boolean expResult = false;
+        Airports pojo = instance.getById(53);
+        pojo.setCode("WBU");
+        pojo.setName("White Box Update");
+        pojo.setProvince("Jawa Barat");
+        pojo.setCity("Depok");
         boolean result = instance.update(pojo);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertTrue(result);
     }
     
 }

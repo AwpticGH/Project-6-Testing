@@ -5,6 +5,7 @@
  */
 package dao;
 
+import java.util.Date;
 import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -12,7 +13,9 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import pojo.Airplanes;
 import pojo.Flights;
+import pojo.Routes;
 
 /**
  *
@@ -46,11 +49,10 @@ public class FlightsDaoTest {
     public void testGetAll() {
         System.out.println("getAll");
         FlightsDao instance = new FlightsDao();
-        List<Flights> expResult = null;
-        List<Flights> result = instance.getAll();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        String expResult = "1";
+        List<Flights> result = null;
+        result = instance.getAll();
+        assertEquals(expResult, String.valueOf(result.get(0).getId()));
     }
 
     /**
@@ -59,13 +61,11 @@ public class FlightsDaoTest {
     @Test
     public void testGetById() {
         System.out.println("getById");
-        int id = 0;
+        int id = 1;
         FlightsDao instance = new FlightsDao();
-        Flights expResult = null;
+        String expResult = "118";
         Flights result = instance.getById(id);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(expResult, String.valueOf(result.getRoutes().getId()));
     }
 
     /**
@@ -74,13 +74,22 @@ public class FlightsDaoTest {
     @Test
     public void testCreate() {
         System.out.println("create");
-        Object pojo = null;
         FlightsDao instance = new FlightsDao();
-        boolean expResult = false;
+        Flights pojo = new Flights();
+        
+        AirplanesDao airplaneDao = new AirplanesDao();
+        Airplanes airplane = airplaneDao.getById(33);
+        pojo.setAirplanes(airplane);
+        
+        RoutesDao routeDao = new RoutesDao();
+        Routes route = routeDao.getById(7130);
+        pojo.setRoutes(route);
+        
+        Date date = new Date();
+        pojo.setTimeOfDeparture(date);
+        
         boolean result = instance.create(pojo);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertTrue(result);
     }
 
     /**
@@ -89,25 +98,22 @@ public class FlightsDaoTest {
     @Test
     public void testUpdate() {
         System.out.println("update");
-        Object pojo = null;
         FlightsDao instance = new FlightsDao();
-        boolean expResult = false;
+        Flights pojo = instance.getById(5);
+        
+        AirplanesDao airplaneDao = new AirplanesDao();
+        Airplanes airplane = airplaneDao.getById(33);
+        pojo.setAirplanes(airplane);
+        
+        RoutesDao routeDao = new RoutesDao();
+        Routes route = routeDao.getById(7130);
+        pojo.setRoutes(route);
+        
+        Date date = new Date();
+        pojo.setTimeOfDeparture(date);
+        
         boolean result = instance.update(pojo);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of main method, of class FlightsDao.
-     */
-    @Test
-    public void testMain() {
-        System.out.println("main");
-        String[] args = null;
-        FlightsDao.main(args);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertTrue(result);
     }
     
 }

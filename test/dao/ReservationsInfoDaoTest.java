@@ -12,6 +12,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import pojo.Reservations;
 import pojo.ReservationsInfo;
 
 /**
@@ -46,11 +47,8 @@ public class ReservationsInfoDaoTest {
     public void testGetAll() {
         System.out.println("getAll");
         ReservationsInfoDao instance = new ReservationsInfoDao();
-        List<ReservationsInfo> expResult = null;
         List<ReservationsInfo> result = instance.getAll();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertNotNull(result);
     }
 
     /**
@@ -59,13 +57,11 @@ public class ReservationsInfoDaoTest {
     @Test
     public void testGetById() {
         System.out.println("getById");
-        int id = 0;
+        int id = 5;
         ReservationsInfoDao instance = new ReservationsInfoDao();
-        ReservationsInfo expResult = null;
+        String expResult = "Rafi Fajar Sulaiman";
         ReservationsInfo result = instance.getById(id);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(expResult, result.getName());
     }
 
     /**
@@ -74,13 +70,26 @@ public class ReservationsInfoDaoTest {
     @Test
     public void testCreate() {
         System.out.println("create");
-        Object pojo = null;
         ReservationsInfoDao instance = new ReservationsInfoDao();
-        boolean expResult = false;
+        ReservationsInfo pojo = new ReservationsInfo();
+        
+        ReservationsDao reservationDao = new ReservationsDao();
+        Reservations reservation = reservationDao.getById(1);
+        pojo.setReservations(reservation);
+        
+        pojo.setSeatClass("White Box Create");
+        pojo.setName("White Box Create");
+        
+        byte age = 100;
+        pojo.setAge(age);
+        
+        pojo.setGender("Other");
+        
+        long phoneNumber = 821987654;
+        pojo.setPhoneNumber(phoneNumber);
+        
         boolean result = instance.create(pojo);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertTrue(result);
     }
 
     /**
@@ -89,13 +98,26 @@ public class ReservationsInfoDaoTest {
     @Test
     public void testUpdate() {
         System.out.println("update");
-        Object pojo = null;
         ReservationsInfoDao instance = new ReservationsInfoDao();
-        boolean expResult = false;
+        ReservationsInfo pojo = instance.getById(6);
+        
+        ReservationsDao reservationDao = new ReservationsDao();
+        Reservations reservation = reservationDao.getById(1);
+        pojo.setReservations(reservation);
+        
+        pojo.setSeatClass("White Box Update");
+        pojo.setName("White Box Update");
+        
+        byte age = 100;
+        pojo.setAge(age);
+        
+        pojo.setGender("Other");
+        
+        long phoneNumber = 821988888;
+        pojo.setPhoneNumber(phoneNumber);
+        
         boolean result = instance.update(pojo);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertTrue(result);
     }
     
 }

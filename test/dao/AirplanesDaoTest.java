@@ -12,6 +12,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import pojo.Airlines;
 import pojo.Airplanes;
 
 /**
@@ -77,7 +78,9 @@ public class AirplanesDaoTest {
         pojo.setPremiumEconomySeats(300);
         pojo.setBusinessSeats(300);
         pojo.setFirstClassSeats(300);
-        pojo.setAirlineId(1);
+        AirlinesDao airlineDao = new AirlinesDao();
+        Airlines airline = airlineDao.getById(1);
+        pojo.setAirlines(airline);
         boolean result = instance.create(pojo);
         assertTrue(result);
     }
@@ -88,13 +91,19 @@ public class AirplanesDaoTest {
     @Test
     public void testUpdate() {
         System.out.println("update");
-        Object pojo = null;
         AirplanesDao instance = new AirplanesDao();
-        boolean expResult = false;
+        Airplanes pojo = instance.getById(42);
+        pojo.setType("Black Box Test Update");
+        pojo.setTotalSeats(360);
+        pojo.setEconomySeats(240);
+        pojo.setPremiumEconomySeats(120);
+        pojo.setBusinessSeats(0);
+        pojo.setFirstClassSeats(0);
+        AirlinesDao airlineDao = new AirlinesDao();
+        Airlines airline = airlineDao.getById(2);
+        pojo.setAirlines(airline);
         boolean result = instance.update(pojo);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertTrue(result);
     }
     
 }

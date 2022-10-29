@@ -6,7 +6,7 @@
     <class name="pojo.Airports" table="airports" catalog="g2airline" optimistic-lock="version">
         <id name="id" type="int">
             <column name="id" />
-            <generator class="assigned" />
+            <generator class="identity" />
         </id>
         <property name="code" type="string">
             <column name="code" length="3" not-null="true" />

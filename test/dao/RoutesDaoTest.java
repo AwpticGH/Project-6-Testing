@@ -12,6 +12,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import pojo.Airports;
 import pojo.Routes;
 
 /**
@@ -46,11 +47,8 @@ public class RoutesDaoTest {
     public void testGetAll() {
         System.out.println("getAll");
         RoutesDao instance = new RoutesDao();
-        List<Routes> expResult = null;
         List<Routes> result = instance.getAll();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertNotNull(result);
     }
 
     /**
@@ -59,13 +57,11 @@ public class RoutesDaoTest {
     @Test
     public void testGetById() {
         System.out.println("getById");
-        int id = 0;
+        int id = 118;
         RoutesDao instance = new RoutesDao();
-        Routes expResult = null;
+        String expResult = "CGK";
         Routes result = instance.getById(id);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(expResult, result.getAirportsByDepartureId().getCode());
     }
 
     /**
@@ -74,13 +70,21 @@ public class RoutesDaoTest {
     @Test
     public void testCreate() {
         System.out.println("create");
-        Object pojo = null;
         RoutesDao instance = new RoutesDao();
-        boolean expResult = false;
+        Routes pojo = new Routes();
+        pojo.setId(9998);
+        
+        AirportsDao airportDao = new AirportsDao();
+        Airports departure = airportDao.getById(5);
+        pojo.setAirportsByDepartureId(departure);
+        
+        Airports destination = airportDao.getById(10);
+        pojo.setAirportsByDestinationId(destination);
+        
+        pojo.setTimeOfFlight(300);
+        
         boolean result = instance.create(pojo);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertTrue(result);
     }
 
     /**
@@ -89,25 +93,20 @@ public class RoutesDaoTest {
     @Test
     public void testUpdate() {
         System.out.println("update");
-        Object pojo = null;
         RoutesDao instance = new RoutesDao();
-        boolean expResult = false;
+        Routes pojo = instance.getById(9999);
+        pojo.setId(9999);
+        
+        AirportsDao airportDao = new AirportsDao();
+        Airports departure = airportDao.getById(10);
+        pojo.setAirportsByDepartureId(departure);
+        
+        Airports destination = airportDao.getById(5);
+        pojo.setAirportsByDestinationId(destination);
+        
+        pojo.setTimeOfFlight(399);
+        
         boolean result = instance.update(pojo);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertTrue(result);
     }
-
-    /**
-     * Test of main method, of class RoutesDao.
-     */
-    @Test
-    public void testMain() {
-        System.out.println("main");
-        String[] args = null;
-        RoutesDao.main(args);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-    
 }
