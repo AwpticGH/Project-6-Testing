@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>ReservationsDao.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;G2AirlineHibernate&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">dao</a> &gt; <span class="el_source">ReservationsDao.java</span></div><h1>ReservationsDao.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package dao;
+
+import java.util.ArrayList;
+import java.util.List;
+import pojo.Admins;
+import pojo.Reservations;
+
+/**
+ *
+ * @author rafifajarrr
+ */
+<span class="fc" id="L17">public class ReservationsDao extends BaseDao {</span>
+    
+<span class="fc" id="L19">    String fetch1 = &quot;flights&quot;;</span>
+<span class="fc" id="L20">    String fetch2 = &quot;users&quot;;</span>
+    
+    public List&lt;Reservations&gt; getAll() {
+<span class="nc" id="L23">        List&lt;Object&gt; results = super.getAllWithFetch(Reservations.class, fetch1, fetch2);</span>
+<span class="nc" id="L24">        List&lt;Reservations&gt; list = new ArrayList&lt;&gt;();</span>
+        
+<span class="nc" id="L26">        results.forEach((result) -&gt; {</span>
+<span class="nc" id="L27">            list.add(Reservations.class.cast(result));</span>
+<span class="nc" id="L28">        });</span>
+        
+<span class="nc" id="L30">        return list;</span>
+    }
+    
+    public Reservations getById(int id) {
+<span class="nc" id="L34">        return Reservations.class.cast(super.getByIdWithFetch(Reservations.class, id, fetch1, fetch2));</span>
+    }
+    
+    @Override
+    public boolean create(Object pojo) {
+<span class="nc" id="L39">        return super.create(pojo);</span>
+    }
+    
+    @Override
+    public boolean update(Object pojo) {
+<span class="nc" id="L44">        return super.update(pojo);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>

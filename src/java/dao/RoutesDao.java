@@ -42,28 +42,4 @@ public class RoutesDao extends BaseDao {
     public boolean update(Object pojo) {
         return super.update(pojo);
     }
-    
-    public static void main(String[] args) {
-        
-//        RoutesDao dao = new RoutesDao();
-//        List<Routes> routes = dao.getAll();
-//        Routes rout = dao.getById(118);
-        
-        
-        
-//        routes.forEach((route) -> {
-//            System.out.println(route.getId());
-//            System.out.println(route.getAirportsByDepartureId().getName());
-//            System.out.println(route.getAirportsByDestinationId().getName());
-//            System.out.println(route.getTimeOfFlight());
-//            System.out.println("\n\n");
-//        });
-
-//        System.out.println(rout.getId());
-//        System.out.println(rout.getAirportsByDepartureId().getName());
-//        System.out.println(rout.getAirportsByDestinationId().getName());
-//        System.out.println(rout.getTimeOfFlight());
-    }
-    
-    
 }

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>AdminsDao.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;G2AirlineHibernate&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">dao</a> &gt; <span class="el_source">AdminsDao.java</span></div><h1>AdminsDao.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package dao;
+
+import config.HibernateUtil;
+import java.util.ArrayList;
+import java.util.List;
+import javax.faces.context.FacesContext;
+import org.hibernate.HibernateException;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import pojo.Admins;
+
+/**
+ *
+ * @author WahyuAu
+ */
+<span class="fc" id="L22">public class AdminsDao extends BaseDao {</span>
+    
+    
+<span class="fc" id="L25">    HibernateUtil hibernateUtil = new HibernateUtil();</span>
+    
+    public List&lt;Admins&gt; getAll() {
+<span class="fc" id="L28">        List&lt;Object&gt; results = super.getAll(Admins.class);</span>
+<span class="fc" id="L29">        List&lt;Admins&gt; list = new ArrayList&lt;&gt;();</span>
+        
+<span class="fc" id="L31">        results.forEach((result) -&gt; {</span>
+<span class="fc" id="L32">            list.add(Admins.class.cast(result));</span>
+<span class="fc" id="L33">        });</span>
+        
+<span class="fc" id="L35">        return list;</span>
+    }
+    
+    public Admins getById(int id) {
+<span class="fc" id="L39">        return Admins.class.cast(super.getById(Admins.class, id));</span>
+    }
+    
+    public Admins getByUsernameAndPassword(String username, String password) {
+<span class="fc" id="L43">        Admins admin = null;</span>
+        
+<span class="fc" id="L45">        Session session = hibernateUtil.openSession();</span>
+        try {
+<span class="fc" id="L47">            Transaction trans = session.beginTransaction();</span>
+
+<span class="fc" id="L49">            String hql = &quot;FROM Admins WHERE username = :username AND password = :password&quot;;</span>
+<span class="fc" id="L50">            Query query = session.createQuery(hql);</span>
+<span class="fc" id="L51">            query.setString(&quot;username&quot;, username);</span>
+<span class="fc" id="L52">            query.setString(&quot;password&quot;, password);</span>
+
+<span class="fc" id="L54">            admin = (Admins)query.uniqueResult();</span>
+<span class="fc" id="L55">            session.get(Admins.class, admin.getId());</span>
+
+<span class="fc" id="L57">            trans.commit();</span>
+        }
+<span class="nc" id="L59">        catch (HibernateException e) {</span>
+<span class="nc" id="L60">            e.getMessage();</span>
+        }
+        finally {
+<span class="pc" id="L63">            session.close();</span>
+<span class="pc" id="L64">        }</span>
+        
+<span class="fc" id="L66">        return admin;</span>
+    }
+    
+//    public static void main(String[] args) {
+//        AdminsDao adminsDao = new AdminsDao();
+//        
+//        Admins admin = adminsDao.getById(5);
+//        List&lt;Admins&gt; admins = adminsDao.getAll();
+//
+//        System.out.println(admin.getName());
+//        System.out.println(admin.getUsername());
+//        System.out.println(admin.getPassword());
+//
+//        admin.setId(6);
+//        admin.setName(&quot;Update&quot;);
+//        admin.setUsername(&quot;update&quot;);
+//        admin.setPassword(&quot;update&quot;);
+//        System.out.println(adminsDao.delete(admin)); //Needs ID
+//        System.out.println(adminsDao.update(admin)); //Needs ID
+//        System.out.println(adminsDao.create(admin)); //Success (no need for id)
+//        System.out.println(admins.toString());
+//        System.out.println(adminsDao.getByUsernameAndPassword(&quot;superadmin&quot;, &quot;superadmin123&quot;));
+//    }
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>
