@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 10, 2022 3:35:37 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="pojo.Users" table="users" catalog="g2airline" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="username" type="string">
+            <column name="username" length="32" not-null="true" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="50" not-null="true" />
+        </property>
+        <property name="password" type="string">
+            <column name="password" length="16" not-null="true" />
+        </property>
+        <property name="name" type="string">
+            <column name="name" length="50" not-null="true" />
+        </property>
+        <property name="dateOfBirth" type="date">
+            <column name="date_of_birth" length="10" not-null="true" />
+        </property>
+        <property name="gender" type="string">
+            <column name="gender" length="6" />
+        </property>
+        <property name="title" type="string">
+            <column name="title" length="5" />
+        </property>
+        <property name="phoneNumber" type="long">
+            <column name="phone_number" not-null="true" />
+        </property>
+        <set name="reservationses" table="reservations" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="user_id" not-null="true" />
+            </key>
+            <one-to-many class="pojo.Reservations" />
+        </set>
+    </class>
+</hibernate-mapping>

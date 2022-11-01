@@ -60,7 +60,7 @@ public class ReservationsInfoTest {
         createRsvInfo = new ReservationsInfo(createRsvId, createSeatClass, createName, createAge, createGender, createPhoneNumber);
         
         updateTrue = dao.getById(7);
-        updateTrue.setReservations(updateRsvId);
+        updateTrue.setReservationId(23);
         updateTrue.setSeatClass(updateSeatClass);
         updateTrue.setName(updateName);
         updateTrue.setAge(updateAge);
@@ -77,206 +77,14 @@ public class ReservationsInfoTest {
     }
 
     /**
-     * Test of getId method, of class ReservationsInfo.
-     */
-    @Test
-    public void testGetId() {
-        System.out.println("getId");
-        ReservationsInfo instance = new ReservationsInfo();
-        Integer expResult = null;
-        Integer result = instance.getId();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setId method, of class ReservationsInfo.
-     */
-    @Test
-    public void testSetId() {
-        System.out.println("setId");
-        Integer id = null;
-        ReservationsInfo instance = new ReservationsInfo();
-        instance.setId(id);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getReservations method, of class ReservationsInfo.
-     */
-    @Test
-    public void testGetReservations() {
-        System.out.println("getReservations");
-        ReservationsInfo instance = new ReservationsInfo();
-        Reservations expResult = null;
-        Reservations result = instance.getReservations();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setReservations method, of class ReservationsInfo.
-     */
-    @Test
-    public void testSetReservations() {
-        System.out.println("setReservations");
-        Reservations reservations = null;
-        ReservationsInfo instance = new ReservationsInfo();
-        instance.setReservations(reservations);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getSeatClass method, of class ReservationsInfo.
-     */
-    @Test
-    public void testGetSeatClass() {
-        System.out.println("getSeatClass");
-        ReservationsInfo instance = new ReservationsInfo();
-        String expResult = "";
-        String result = instance.getSeatClass();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setSeatClass method, of class ReservationsInfo.
-     */
-    @Test
-    public void testSetSeatClass() {
-        System.out.println("setSeatClass");
-        String seatClass = "";
-        ReservationsInfo instance = new ReservationsInfo();
-        instance.setSeatClass(seatClass);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getName method, of class ReservationsInfo.
-     */
-    @Test
-    public void testGetName() {
-        System.out.println("getName");
-        ReservationsInfo instance = new ReservationsInfo();
-        String expResult = "";
-        String result = instance.getName();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setName method, of class ReservationsInfo.
-     */
-    @Test
-    public void testSetName() {
-        System.out.println("setName");
-        String name = "";
-        ReservationsInfo instance = new ReservationsInfo();
-        instance.setName(name);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getAge method, of class ReservationsInfo.
-     */
-    @Test
-    public void testGetAge() {
-        System.out.println("getAge");
-        ReservationsInfo instance = new ReservationsInfo();
-        byte expResult = 0;
-        byte result = instance.getAge();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setAge method, of class ReservationsInfo.
-     */
-    @Test
-    public void testSetAge() {
-        System.out.println("setAge");
-        byte age = 0;
-        ReservationsInfo instance = new ReservationsInfo();
-        instance.setAge(age);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getGender method, of class ReservationsInfo.
-     */
-    @Test
-    public void testGetGender() {
-        System.out.println("getGender");
-        ReservationsInfo instance = new ReservationsInfo();
-        String expResult = "";
-        String result = instance.getGender();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setGender method, of class ReservationsInfo.
-     */
-    @Test
-    public void testSetGender() {
-        System.out.println("setGender");
-        String gender = "";
-        ReservationsInfo instance = new ReservationsInfo();
-        instance.setGender(gender);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getPhoneNumber method, of class ReservationsInfo.
-     */
-    @Test
-    public void testGetPhoneNumber() {
-        System.out.println("getPhoneNumber");
-        ReservationsInfo instance = new ReservationsInfo();
-        Long expResult = null;
-        Long result = instance.getPhoneNumber();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setPhoneNumber method, of class ReservationsInfo.
-     */
-    @Test
-    public void testSetPhoneNumber() {
-        System.out.println("setPhoneNumber");
-        Long phoneNumber = null;
-        ReservationsInfo instance = new ReservationsInfo();
-        instance.setPhoneNumber(phoneNumber);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
      * Test of getAll method, of class ReservationsInfo.
      */
     @Test
     public void testGetAll() {
         System.out.println("getAll");
         ReservationsInfo instance = new ReservationsInfo();
-        List<ReservationsInfo> expResult = null;
         List<ReservationsInfo> result = instance.getAll();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertFalse(result.isEmpty());
     }
 
     /**
@@ -286,53 +94,83 @@ public class ReservationsInfoTest {
     public void testGetById() {
         System.out.println("getById");
         ReservationsInfo instance = new ReservationsInfo();
-        String expResult = "";
+        instance.setId(5);
+        String expResult = "./edit_reservations_info.xhtml";
         String result = instance.getById();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
      * Test of create method, of class ReservationsInfo.
      */
     @Test
-    public void testCreate() {
-        System.out.println("create");
-        ReservationsInfo instance = new ReservationsInfo();
-        String expResult = "";
-        String result = instance.create();
+    public void testCreateTrue() {
+        System.out.println("createTrue");
+        String expResult = "../reservations_info.xhtml";
+        String result = createRsvInfo.create();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    }
+    
+    /**
+     * Test of create method, of class ReservationsInfo.
+     */
+    @Test
+    public void testCreateFalse() {
+        System.out.println("createFalse");
+        String expResult = "./create_reservations_info.xhtml";
+        
+        createRsvInfo.setName(null);
+        createRsvInfo.setPhoneNumber(null);
+        createRsvInfo.setGender(null);
+        String result = createRsvInfo.create();
+        
+        assertEquals(expResult, result);
     }
 
     /**
      * Test of update method, of class ReservationsInfo.
      */
     @Test
-    public void testUpdate() {
-        System.out.println("update");
-        ReservationsInfo instance = new ReservationsInfo();
-        String expResult = "";
-        String result = instance.update();
+    public void testUpdateTrue() {
+        System.out.println("updateTrue");
+        String expResult = "../reservations_info.xhtml";
+        String result = updateTrue.update();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    }
+    
+    /**
+     * Test of update method, of class ReservationsInfo.
+     */
+    @Test
+    public void testUpdateFalse() {
+        System.out.println("updateFalse");
+        String expResult = "./edit_reservations_info.xhtml";
+        updateFalse.setId(null);
+        String result = updateFalse.update();
+        assertEquals(expResult, result);
     }
 
     /**
      * Test of delete method, of class ReservationsInfo.
      */
     @Test
-    public void testDelete() {
-        System.out.println("delete");
-        ReservationsInfo instance = new ReservationsInfo();
-        String expResult = "";
-        String result = instance.delete();
+    public void testDeleteTrue() {
+        System.out.println("deleteTrue");
+        String expResult = "../reservations_info.xhtml";
+        String result = deleteTrue.delete();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    }
+    
+    /**
+     * Test of delete method, of class ReservationsInfo.
+     */
+    @Test
+    public void testDeleteFalse() {
+        System.out.println("deleteFalse");
+        String expResult = "./edit_reservations_info.xhtml";
+        deleteFalse.setId(0);
+        String result = deleteFalse.delete();
+        assertEquals(expResult, result);
     }
     
 }

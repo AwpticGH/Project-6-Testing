@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 10, 2022 3:35:37 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="pojo.Airports" table="airports" catalog="g2airline" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="code" type="string">
+            <column name="code" length="3" not-null="true" />
+        </property>
+        <property name="name" type="string">
+            <column name="name" length="256" not-null="true" />
+        </property>
+        <property name="province" type="string">
+            <column name="province" length="256" not-null="true" />
+        </property>
+        <property name="city" type="string">
+            <column name="city" length="256" not-null="true" />
+        </property>
+        <set name="routesesForDestinationId" table="routes" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="destination_id" not-null="true" />
+            </key>
+            <one-to-many class="pojo.Routes" />
+        </set>
+        <set name="routesesForDepartureId" table="routes" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="departure_id" not-null="true" />
+            </key>
+            <one-to-many class="pojo.Routes" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 10, 2022 3:35:37 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="pojo.Reservations" table="reservations" catalog="g2airline" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="flights" class="pojo.Flights" fetch="select">
+            <column name="flight_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="users" class="pojo.Users" fetch="select">
+            <column name="user_id" not-null="true" />
+        </many-to-one>
+        <property name="paid" type="boolean">
+            <column name="paid" not-null="true" />
+        </property>
+        <property name="active" type="boolean">
+            <column name="active" not-null="true" />
+        </property>
+        <set name="reservationsInfos" table="reservations_info" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="reservation_id" not-null="true" />
+            </key>
+            <one-to-many class="pojo.ReservationsInfo" />
+        </set>
+    </class>
+</hibernate-mapping>
