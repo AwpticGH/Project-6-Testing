@@ -5,6 +5,7 @@
  */
 package pojo;
 
+import dao.AdminsDao;
 import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -19,6 +20,26 @@ import static org.junit.Assert.*;
  */
 public class AdminsTest {
     
+    AdminsDao dao = new AdminsDao();
+    Admins createAdmin;
+    Admins updateTrue;
+    Admins updateFalse;
+    Admins deleteTrue;
+    Admins deleteFalse;
+    
+    String createName = "White Box Create";
+    String createUsername = "White Box Create";
+    String createPassword = "White Box Create";
+    
+    String updateName = "White Box Update";
+    String updateUsername = "White Box Update";
+    String updatePassword = "White Box Update";
+    
+    boolean insertPriv = false;
+    boolean selectPriv = false;
+    boolean updatePriv = false;
+    boolean deletePriv = false;
+    
     public AdminsTest() {
     }
     
@@ -32,6 +53,20 @@ public class AdminsTest {
     
     @Before
     public void setUp() {
+        createAdmin = new Admins(createName, createUsername, createPassword, insertPriv, selectPriv, updatePriv, deletePriv);
+        
+        updateTrue = dao.getById(6);
+        updateTrue.setName(updateName);
+        updateTrue.setUsername(updateUsername);
+        updateTrue.setPassword(updatePassword);
+        updateTrue.setInsertPriv(insertPriv);
+        updateTrue.setSelectPriv(insertPriv);
+        updateTrue.setUpdatePriv(insertPriv);
+        updateTrue.setDeletePriv(insertPriv);
+        
+        updateFalse = dao.getById(8);
+        deleteTrue = dao.getById(7);
+        deleteFalse = dao.getById(9);
     }
     
     @After
@@ -45,6 +80,7 @@ public class AdminsTest {
     public void testGetById() {
         System.out.println("getById");
         Admins instance = new Admins();
+        instance.setId(1);
         String expResult = "./edit_admins.xhtml";
         String result = instance.getById();
         assertEquals(expResult, result);
@@ -57,6 +93,8 @@ public class AdminsTest {
     public void testLogin() {
         System.out.println("login");
         Admins instance = new Admins();
+        instance.setUsername("superadmin");
+        instance.setPassword("superadmin123");
         boolean result = instance.login();
         assertTrue(result);
     }
@@ -79,7 +117,7 @@ public class AdminsTest {
     @Test
     public void testCreateTrue() {
         System.out.println("createTrue");
-        Admins instance = new Admins();
+        Admins instance = this.createAdmin;
         String expResult = "../admins.xhtml";
         String result = instance.create();
         assertEquals(expResult, result);
@@ -91,7 +129,11 @@ public class AdminsTest {
     @Test
     public void testCreateFalse() {
         System.out.println("createFalse");
-        Admins instance = new Admins();
+        Admins instance = this.createAdmin;
+        instance.setName(null);
+        instance.setUsername(null);
+        instance.setPassword(null);
+        
         String expResult = "./create_admins.xhtml";
         String result = instance.create();
         assertEquals(expResult, result);
@@ -101,28 +143,50 @@ public class AdminsTest {
      * Test of update method, of class Admins.
      */
     @Test
-    public void testUpdate() {
-        System.out.println("update");
-        Admins instance = new Admins();
-        String expResult = "";
+    public void testUpdateTrue() {
+        System.out.println("updateTrue");
+        Admins instance = this.updateTrue;
+        String expResult = "../admins.xhtml";
         String result = instance.update();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    }
+    
+    /**
+     * Test of update method, of class Admins.
+     */
+    @Test
+    public void testUpdateFalse() {
+        System.out.println("updateFalse");
+        Admins instance = this.updateFalse;
+        instance.setId(null);
+        String expResult = "./edit_admins.xhtml";
+        String result = instance.update();
+        assertEquals(expResult, result);
     }
 
     /**
      * Test of delete method, of class Admins.
      */
     @Test
-    public void testDelete() {
-        System.out.println("delete");
-        Admins instance = new Admins();
-        String expResult = "";
+    public void testDeleteTrue() {
+        System.out.println("deleteTrue");
+        Admins instance = this.deleteTrue;
+        String expResult = "../admins.xhtml";
         String result = instance.delete();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    }
+    
+    /**
+     * Test of delete method, of class Admins.
+     */
+    @Test
+    public void testDeleteFalse() {
+        System.out.println("deleteFalse");
+        Admins instance = this.deleteFalse;
+        instance.setId(null);
+        String expResult = "./edit_admins.xhtml";
+        String result = instance.delete();
+        assertEquals(expResult, result);
     }
     
 }
