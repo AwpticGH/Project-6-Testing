@@ -5,6 +5,8 @@
  */
 package pojo;
 
+import dao.ReservationsDao;
+import dao.ReservationsInfoDao;
 import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -19,6 +21,29 @@ import static org.junit.Assert.*;
  */
 public class ReservationsInfoTest {
     
+    ReservationsDao reservationDao = new ReservationsDao();
+    
+    ReservationsInfoDao dao = new ReservationsInfoDao();
+    ReservationsInfo createRsvInfo;
+    ReservationsInfo updateTrue;
+    ReservationsInfo updateFalse;
+    ReservationsInfo deleteTrue;
+    ReservationsInfo deleteFalse;
+    
+    Reservations createRsvId = reservationDao.getById(1);
+    String createSeatClass = "White Box Create";
+    String createName = "White Box Create";
+    byte createAge = 31;
+    String createGender = "Male";
+    long createPhoneNumber = 822131232;
+    
+    Reservations updateRsvId = reservationDao.getById(23);
+    String updateSeatClass = "White Box Update";
+    String updateName = "White Box Update";
+    byte updateAge = 23;
+    String updateGender = "Female";
+    long updatePhoneNumber = 822131321;
+    
     public ReservationsInfoTest() {
     }
     
@@ -32,6 +57,19 @@ public class ReservationsInfoTest {
     
     @Before
     public void setUp() {
+        createRsvInfo = new ReservationsInfo(createRsvId, createSeatClass, createName, createAge, createGender, createPhoneNumber);
+        
+        updateTrue = dao.getById(7);
+        updateTrue.setReservations(updateRsvId);
+        updateTrue.setSeatClass(updateSeatClass);
+        updateTrue.setName(updateName);
+        updateTrue.setAge(updateAge);
+        updateTrue.setGender(updateGender);
+        updateTrue.setPhoneNumber(updatePhoneNumber);
+        
+        updateFalse = dao.getById(8);
+        deleteTrue = dao.getById(9);
+        deleteFalse = dao.getById(10);
     }
     
     @After
