@@ -29,8 +29,7 @@ public class Airports  implements java.io.Serializable {
     }
 
 	
-    public Airports(int id, String code, String name, String province, String city) {
-        this.id = id;
+    public Airports(String code, String name, String province, String city) {
         this.code = code;
         this.name = name;
         this.province = province;
