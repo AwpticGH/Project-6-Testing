@@ -53,6 +53,15 @@ public class ReservationsInfo  implements java.io.Serializable {
     public void setId(Integer id) {
         this.id = id;
     }
+
+    public int getReservationId() {
+        return reservationId;
+    }
+
+    public void setReservationId(int reservationId) {
+        this.reservationId = reservationId;
+    }
+    
     public Reservations getReservations() {
         return this.reservations;
     }
