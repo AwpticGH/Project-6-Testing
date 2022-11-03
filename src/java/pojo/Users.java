@@ -38,12 +38,14 @@ public class Users  implements java.io.Serializable {
     }
 
 	
-    public Users(String username, String email, String password, String name, Date dateOfBirth, long phoneNumber) {
+    public Users(String username, String email, String password, String name, Date dateOfBirth, String gender, String title, long phoneNumber) {
         this.username = username;
         this.email = email;
         this.password = password;
         this.name = name;
         this.dateOfBirth = dateOfBirth;
+        this.gender = gender;
+        this.title = title;
         this.phoneNumber = phoneNumber;
     }
     public Users(String username, String email, String password, String name, Date dateOfBirth, String gender, String title, long phoneNumber, Set reservationses) {

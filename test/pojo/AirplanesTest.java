@@ -5,6 +5,8 @@
  */
 package pojo;
 
+import dao.AirlinesDao;
+import dao.AirplanesDao;
 import java.util.List;
 import java.util.Set;
 import org.junit.After;
@@ -20,6 +22,23 @@ import static org.junit.Assert.*;
  */
 public class AirplanesTest {
     
+    AirplanesDao dao = new AirplanesDao();
+    Airplanes createAirplane;
+    Airplanes updateTrue;
+    Airplanes updateFalse;
+    Airplanes deleteTrue;
+    Airplanes deleteFalse;
+    
+    String type = "White-Box";
+    int totalSeats = 300;
+    int economy = 150;
+    int preEconomy = 70;
+    int business = 80;
+    int firstClass = 50;
+    
+    AirlinesDao airlineDao = new AirlinesDao();
+    Airlines airline = airlineDao.getById(1);
+    
     public AirplanesTest() {
     }
     
@@ -33,388 +52,23 @@ public class AirplanesTest {
     
     @Before
     public void setUp() {
+        createAirplane = new Airplanes(airline, type, economy, preEconomy, business, firstClass);
+        createAirplane.setTotalSeats(totalSeats);
+        
+        updateTrue = dao.getById(42);
+        updateTrue.setType("update");
+        
+        updateFalse = dao.getById(43);
+        updateFalse.setId(0);
+        
+        deleteTrue = dao.getById(44);
+        
+        deleteFalse = dao.getById(45);
+        deleteFalse.setId(0);
     }
     
     @After
     public void tearDown() {
-    }
-
-    /**
-     * Test of getId method, of class Airplanes.
-     */
-    @Test
-    public void testGetId() {
-        System.out.println("getId");
-        Airplanes instance = new Airplanes();
-        Integer expResult = null;
-        Integer result = instance.getId();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setId method, of class Airplanes.
-     */
-    @Test
-    public void testSetId() {
-        System.out.println("setId");
-        Integer id = null;
-        Airplanes instance = new Airplanes();
-        instance.setId(id);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getAirlineId method, of class Airplanes.
-     */
-    @Test
-    public void testGetAirlineId() {
-        System.out.println("getAirlineId");
-        Airplanes instance = new Airplanes();
-        int expResult = 0;
-        int result = instance.getAirlineId();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setAirlineId method, of class Airplanes.
-     */
-    @Test
-    public void testSetAirlineId() {
-        System.out.println("setAirlineId");
-        int airlineId = 0;
-        Airplanes instance = new Airplanes();
-        instance.setAirlineId(airlineId);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getAirlines method, of class Airplanes.
-     */
-    @Test
-    public void testGetAirlines() {
-        System.out.println("getAirlines");
-        Airplanes instance = new Airplanes();
-        Airlines expResult = null;
-        Airlines result = instance.getAirlines();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setAirlines method, of class Airplanes.
-     */
-    @Test
-    public void testSetAirlines() {
-        System.out.println("setAirlines");
-        Airlines airlines = null;
-        Airplanes instance = new Airplanes();
-        instance.setAirlines(airlines);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getType method, of class Airplanes.
-     */
-    @Test
-    public void testGetType() {
-        System.out.println("getType");
-        Airplanes instance = new Airplanes();
-        String expResult = "";
-        String result = instance.getType();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setType method, of class Airplanes.
-     */
-    @Test
-    public void testSetType() {
-        System.out.println("setType");
-        String type = "";
-        Airplanes instance = new Airplanes();
-        instance.setType(type);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getTotalSeats method, of class Airplanes.
-     */
-    @Test
-    public void testGetTotalSeats() {
-        System.out.println("getTotalSeats");
-        Airplanes instance = new Airplanes();
-        Integer expResult = null;
-        Integer result = instance.getTotalSeats();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setTotalSeats method, of class Airplanes.
-     */
-    @Test
-    public void testSetTotalSeats() {
-        System.out.println("setTotalSeats");
-        Integer totalSeats = null;
-        Airplanes instance = new Airplanes();
-        instance.setTotalSeats(totalSeats);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getEconomySeats method, of class Airplanes.
-     */
-    @Test
-    public void testGetEconomySeats() {
-        System.out.println("getEconomySeats");
-        Airplanes instance = new Airplanes();
-        int expResult = 0;
-        int result = instance.getEconomySeats();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setEconomySeats method, of class Airplanes.
-     */
-    @Test
-    public void testSetEconomySeats() {
-        System.out.println("setEconomySeats");
-        int economySeats = 0;
-        Airplanes instance = new Airplanes();
-        instance.setEconomySeats(economySeats);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getPremiumEconomySeats method, of class Airplanes.
-     */
-    @Test
-    public void testGetPremiumEconomySeats() {
-        System.out.println("getPremiumEconomySeats");
-        Airplanes instance = new Airplanes();
-        int expResult = 0;
-        int result = instance.getPremiumEconomySeats();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setPremiumEconomySeats method, of class Airplanes.
-     */
-    @Test
-    public void testSetPremiumEconomySeats() {
-        System.out.println("setPremiumEconomySeats");
-        int premiumEconomySeats = 0;
-        Airplanes instance = new Airplanes();
-        instance.setPremiumEconomySeats(premiumEconomySeats);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getBusinessSeats method, of class Airplanes.
-     */
-    @Test
-    public void testGetBusinessSeats() {
-        System.out.println("getBusinessSeats");
-        Airplanes instance = new Airplanes();
-        int expResult = 0;
-        int result = instance.getBusinessSeats();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setBusinessSeats method, of class Airplanes.
-     */
-    @Test
-    public void testSetBusinessSeats() {
-        System.out.println("setBusinessSeats");
-        int businessSeats = 0;
-        Airplanes instance = new Airplanes();
-        instance.setBusinessSeats(businessSeats);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getFirstClassSeats method, of class Airplanes.
-     */
-    @Test
-    public void testGetFirstClassSeats() {
-        System.out.println("getFirstClassSeats");
-        Airplanes instance = new Airplanes();
-        int expResult = 0;
-        int result = instance.getFirstClassSeats();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setFirstClassSeats method, of class Airplanes.
-     */
-    @Test
-    public void testSetFirstClassSeats() {
-        System.out.println("setFirstClassSeats");
-        int firstClassSeats = 0;
-        Airplanes instance = new Airplanes();
-        instance.setFirstClassSeats(firstClassSeats);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getBusinessSeatses method, of class Airplanes.
-     */
-    @Test
-    public void testGetBusinessSeatses() {
-        System.out.println("getBusinessSeatses");
-        Airplanes instance = new Airplanes();
-        Set expResult = null;
-        Set result = instance.getBusinessSeatses();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setBusinessSeatses method, of class Airplanes.
-     */
-    @Test
-    public void testSetBusinessSeatses() {
-        System.out.println("setBusinessSeatses");
-        Set businessSeatses = null;
-        Airplanes instance = new Airplanes();
-        instance.setBusinessSeatses(businessSeatses);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getFirstClassSeatses method, of class Airplanes.
-     */
-    @Test
-    public void testGetFirstClassSeatses() {
-        System.out.println("getFirstClassSeatses");
-        Airplanes instance = new Airplanes();
-        Set expResult = null;
-        Set result = instance.getFirstClassSeatses();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setFirstClassSeatses method, of class Airplanes.
-     */
-    @Test
-    public void testSetFirstClassSeatses() {
-        System.out.println("setFirstClassSeatses");
-        Set firstClassSeatses = null;
-        Airplanes instance = new Airplanes();
-        instance.setFirstClassSeatses(firstClassSeatses);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getFlightses method, of class Airplanes.
-     */
-    @Test
-    public void testGetFlightses() {
-        System.out.println("getFlightses");
-        Airplanes instance = new Airplanes();
-        Set expResult = null;
-        Set result = instance.getFlightses();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setFlightses method, of class Airplanes.
-     */
-    @Test
-    public void testSetFlightses() {
-        System.out.println("setFlightses");
-        Set flightses = null;
-        Airplanes instance = new Airplanes();
-        instance.setFlightses(flightses);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getEconomySeatses method, of class Airplanes.
-     */
-    @Test
-    public void testGetEconomySeatses() {
-        System.out.println("getEconomySeatses");
-        Airplanes instance = new Airplanes();
-        Set expResult = null;
-        Set result = instance.getEconomySeatses();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setEconomySeatses method, of class Airplanes.
-     */
-    @Test
-    public void testSetEconomySeatses() {
-        System.out.println("setEconomySeatses");
-        Set economySeatses = null;
-        Airplanes instance = new Airplanes();
-        instance.setEconomySeatses(economySeatses);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getPremiumEconomySeatses method, of class Airplanes.
-     */
-    @Test
-    public void testGetPremiumEconomySeatses() {
-        System.out.println("getPremiumEconomySeatses");
-        Airplanes instance = new Airplanes();
-        Set expResult = null;
-        Set result = instance.getPremiumEconomySeatses();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setPremiumEconomySeatses method, of class Airplanes.
-     */
-    @Test
-    public void testSetPremiumEconomySeatses() {
-        System.out.println("setPremiumEconomySeatses");
-        Set premiumEconomySeatses = null;
-        Airplanes instance = new Airplanes();
-        instance.setPremiumEconomySeatses(premiumEconomySeatses);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -424,11 +78,8 @@ public class AirplanesTest {
     public void testGetAll() {
         System.out.println("getAll");
         Airplanes instance = new Airplanes();
-        List<Airplanes> expResult = null;
         List<Airplanes> result = instance.getAll();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertNotNull(result);
     }
 
     /**
@@ -438,53 +89,77 @@ public class AirplanesTest {
     public void testGetById() {
         System.out.println("getById");
         Airplanes instance = new Airplanes();
-        String expResult = "";
+        instance.setId(1);
+        String expResult = "./edit_airplanes.xhtml";
         String result = instance.getById();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
      * Test of update method, of class Airplanes.
      */
     @Test
-    public void testUpdate() {
+    public void testUpdateTrue() {
         System.out.println("update");
-        Airplanes instance = new Airplanes();
-        String expResult = "";
-        String result = instance.update();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        String expResult = "../airplanes.xhtml";
+        String result = updateTrue.update();
+        assertEquals(expResult, result);   
+    }
+    
+    /**
+     * Test of update method, of class Airplanes.
+     */
+    @Test
+    public void testUpdateFalse() {
+        System.out.println("update");
+        String expResult = "./edit_airplanes.xhtml";
+        String result = updateFalse.update();
+        assertEquals(expResult, result);   
     }
 
     /**
      * Test of create method, of class Airplanes.
      */
     @Test
-    public void testCreate() {
+    public void testCreateTrue() {
+        System.out.println("create");
+        String expResult = "../airplanes.xhtml";
+        String result = createAirplane.create();
+        assertEquals(expResult, result);
+    }
+    
+    /**
+     * Test of create method, of class Airplanes.
+     */
+    @Test
+    public void testCreateFalse() {
         System.out.println("create");
         Airplanes instance = new Airplanes();
-        String expResult = "";
+        String expResult = "./create_airplanes.xhtml";
         String result = instance.create();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
      * Test of delete method, of class Airplanes.
      */
     @Test
-    public void testDelete() {
+    public void testDeleteTrue() {
         System.out.println("delete");
-        Airplanes instance = new Airplanes();
-        String expResult = "";
-        String result = instance.delete();
+        String expResult = "../airplanes.xhtml";
+        String result = deleteTrue.delete();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+    }  
     
+    /**
+     * Test of delete method, of class Airplanes.
+     */
+    @Test
+    public void testDeleteFalse() {
+        System.out.println("delete");
+        String expResult = "./edit_airplanes.xhtml";
+        String result = deleteFalse.delete();
+        assertEquals(expResult, result);
+    }    
+
 }
