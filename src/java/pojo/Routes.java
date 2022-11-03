@@ -30,16 +30,18 @@ public class Routes  implements java.io.Serializable {
     }
 
 	
-    public Routes(Airports airportsByDestinationId, Airports airportsByDepartureId, int timeOfFlight) {
+    public Routes(int id, Airports airportsByDestinationId, Airports airportsByDepartureId, int timeOfFlight) {
+        this.id = id;
         this.airportsByDestinationId = airportsByDestinationId;
         this.airportsByDepartureId = airportsByDepartureId;
         this.timeOfFlight = timeOfFlight;
     }
-    public Routes(Airports airportsByDestinationId, Airports airportsByDepartureId, int timeOfFlight, Set flightses) {
-       this.airportsByDestinationId = airportsByDestinationId;
-       this.airportsByDepartureId = airportsByDepartureId;
-       this.timeOfFlight = timeOfFlight;
-       this.flightses = flightses;
+    public Routes(int id, Airports airportsByDestinationId, Airports airportsByDepartureId, int timeOfFlight, Set flightses) {
+        this.id = id;
+        this.airportsByDestinationId = airportsByDestinationId;
+        this.airportsByDepartureId = airportsByDepartureId;
+        this.timeOfFlight = timeOfFlight;
+        this.flightses = flightses;
     }
 
     public int getFrom() {
